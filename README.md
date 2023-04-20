@@ -7,6 +7,7 @@
 - npm install --save-dev --save-exact prettier
 - npm install --save-dev eslint-config-prettier
 - npm install --save-dev husky lint-staged
+- npm i recharts
 
 ## 参考
 
