@@ -8,6 +8,7 @@
 - npm install --save-dev eslint-config-prettier
 - npm install --save-dev husky lint-staged
 - npm i recharts
+- npm i @tanstack/react-query
 
 ## 参考
 
