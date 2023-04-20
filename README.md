@@ -9,6 +9,9 @@
 - npm install --save-dev husky lint-staged
 - npm i recharts
 - npm i @tanstack/react-query
+- npx storybook@latest init
+  - eslintPlugin を聞かれたので Y でインストール（eslint-plugin-storybook がインストールされた？）
+- npm install @storybook/test-runner --save-dev
 
 ## 参考
 
@@ -21,3 +24,6 @@
     - **will consider**
       - eslint-config-prettier で　 eslint の rules を優先する処理(?)なのに、ここで prettier を後に実行(?)の書き方で良いのだろうか？
       - npx で eslint を実行するのは npm と違うのかも？
+- storybook
+  - インストールなど：https://storybook.js.org/docs/react/get-started/install
+  - テストの際、 `npm run storybook` を実行し、別ターミナルで `npm run test-storybook` を実行しないと全テスト自動チェックできない
