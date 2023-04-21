@@ -12,6 +12,8 @@
 - npx storybook@latest init
   - eslintPlugin を聞かれたので Y でインストール（eslint-plugin-storybook がインストールされた？）
 - npm install @storybook/test-runner --save-dev
+- npm install @storybook/testing-library @storybook/jest @storybook/addon-interactions --save-dev
+  - storybook で interaction test を行う際必須
 
 ## 参考
 
