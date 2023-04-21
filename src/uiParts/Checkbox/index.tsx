@@ -1,7 +1,7 @@
 type CheckboxProps = {
   label: string;
   value: boolean;
-  setValue: (b: boolean) => void;
+  setValue: (next_value: boolean) => void;
 };
 export const Checkbox: React.FC<CheckboxProps> = ({
   label,
