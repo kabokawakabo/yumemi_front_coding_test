@@ -16,21 +16,67 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
+/**
+ * checkboxがチェック状態かテスト
+ */
 export const CheckboxChecked: Story = {
   args: {
     value: true,
     label: "チェックボックス",
   },
+  play: async ({ canvasElement, initialArgs }) => {
+    const canvas = within(canvasElement);
+    const checkbox = await canvas.getByRole("checkbox", {
+      name: RegExp(`${initialArgs.label}`, "i"),
+    });
+
+    expect(checkbox).toBeChecked();
+  },
 };
 
+/**
+ * checkboxが未チェック状態かテスト
+ */
 export const CheckboxUnchecked: Story = {
   args: {
     ...CheckboxChecked.args,
     value: false,
   },
+  play: async ({ canvasElement, initialArgs }) => {
+    const canvas = within(canvasElement);
+    const checkbox = await canvas.getByRole("checkbox", {
+      name: RegExp(`${initialArgs.label}`, "i"),
+    });
+
+    expect(checkbox).not.toBeChecked();
+  },
+};
+
+/**
+ * class名が反映されるかテスト
+ */
+export const CheckboxClassName: Story = {
+  args: {
+    ...CheckboxChecked.args,
+    className: "my_class",
+  },
+  play: async ({ canvasElement, initialArgs }) => {
+    const canvas = within(canvasElement);
+    const checkbox = await canvas.getByRole("checkbox", {
+      name: RegExp(`${initialArgs.label}`, "i"),
+    });
+
+    /// NOTE: checkboxをラップしているlabelにclass名を付与しているため、一つ上の要素を参照
+    const labelElement = checkbox.parentElement;
+    const className = initialArgs.className ?? "";
+    expect(labelElement).toHaveClass(className);
+  },
 };
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
+/**
+ * checkboxをクリックした際、setValueが呼ばれ、正しい引数が与えられているかテスト
+ */
 const OnClickArgs = {
   ...CheckboxChecked.args,
 };
