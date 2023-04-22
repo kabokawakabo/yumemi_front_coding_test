@@ -1,4 +1,5 @@
 import { Checkbox } from "../Checkbox";
+import style from "./style.module.css";
 
 type CheckboxListProps = {
   labels: string[];
@@ -26,6 +27,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
 
         return (
           <Checkbox
+            className={style.checkbox}
             key={label}
             label={label}
             value={value}
