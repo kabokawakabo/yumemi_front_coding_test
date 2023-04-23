@@ -1,0 +1,32 @@
+import { Meta, ArgTypes, Controls, Canvas } from '@storybook/blocks';
+import meta from "./index.stories";
+
+import * as LineChartStories from './index.stories';
+
+{/* TODO: title変更を index.stories.tsで動的に取り出したい */}
+<Meta title="Molecule/LineChart/Introduction"/>
+
+
+# チャート補足説明
+
+{/* TODO: jsdocなど？で動的に変更しやすくしたい */}
+## type説明
+#### LineChartDatum
+    - **name** : x軸に表示する値
+    - [**その他key**] : チャート内部のlineが参照する値
+#### LineInfo
+    - **dataKey** : 
+        - string | number :
+            - LineChartDatumを直接参照する
+        - (d: LineChartDatum) => number : 
+            - 現在のX軸に一致するデータから任意のkeyを参照してY軸の値となる数値を返す
+            - （使い方）全てのlineの平均を表示などを関数で計算
+    - **stroke** : lineの色
+    - **name**? : tooltipに表示する名前（dataKeyではない文字を表示したい場合）
+-- --
+
+<Controls of={LineChartStories.LineElementCount} />
+
+
+
+<Canvas of={LineChartStories.LineElementCount} />
