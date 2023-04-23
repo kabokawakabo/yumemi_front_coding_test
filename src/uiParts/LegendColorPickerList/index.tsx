@@ -10,6 +10,9 @@ export const LegendColorPickerList: React.FC<LegendColorPickerListProps> = ({
   legendData,
   setColorCodeForLabel,
 }) => {
+  const createStyle = (value: string): React.CSSProperties => ({
+    borderColor: value,
+  });
   const createSetValue = (label: string) => {
     return (color_code: string) => {
       setColorCodeForLabel(label, color_code);
@@ -19,11 +22,13 @@ export const LegendColorPickerList: React.FC<LegendColorPickerListProps> = ({
   return (
     <>
       {legendData.map(({ label, value }) => {
+        const colorPickerStyle = createStyle(value);
         const setValue = createSetValue(label);
 
         return (
           <LegendColorPicker
             className={style.legend_color_picker}
+            style={colorPickerStyle}
             key={label}
             label={label}
             value={value}
