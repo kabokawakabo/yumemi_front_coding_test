@@ -26,10 +26,11 @@ type Story = StoryObj<typeof meta>;
 export const LineElementCount: Story = {
   args: {
     height: 400,
-    data: createLineData(["a", "b"]),
+    data: createLineData(["a", "b", "c"]),
     lineData: [
       { dataKey: "a", stroke: "#f00" },
       { dataKey: (d: LineChartDatum) => d.b, name: "b", stroke: "#0f0" },
+      { dataKey: "c", name: "北海道", stroke: "#00f" },
     ],
     hasTooltip: true,
     title: "MyLineChart",
