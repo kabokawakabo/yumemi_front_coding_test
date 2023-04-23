@@ -1,0 +1,23 @@
+.tmp_header_title {
+    width: 100%;
+    text-align: center;
+}
+
+
+.header_media {
+    padding: 5px 20px 3px;
+}
+
+.header {
+    width: 100vw;
+    border-bottom: solid;
+    border-width: 2px;
+    border-color: black;
+}
+
+@media screen and (max-width: 440px) {
+    .header_media {
+        width: 100vw;
+        padding: 5px 5px 3px;
+    }
+}
