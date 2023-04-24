@@ -9,6 +9,10 @@ type Response = {
   result?: Prefecture[];
 } & RESAS_Response;
 
+/**
+ * 都道府県一覧 データ取得
+ * https://opendata.resas-portal.go.jp/docs/api/v1/prefectures.html
+ */
 export const getPrefectures = async () => {
   const response = await fetch(`${ENDPOINT}/api/v1/prefectures`, {
     method: "GET",
