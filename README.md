@@ -15,6 +15,12 @@
 - npm install @storybook/testing-library @storybook/jest @storybook/addon-interactions --save-dev
   - storybook で interaction test を行う際必須
 
+## 追加ファイル
+
+```env:./.env.development
+VITE_RESAS_API_TOKEN="自分のトークン"
+```
+
 ## 参考
 
 - prettier
@@ -29,3 +35,5 @@
 - storybook
   - インストールなど：https://storybook.js.org/docs/react/get-started/install
   - テストの際、 `npm run storybook` を実行し、別ターミナルで `npm run test-storybook` を実行しないと全テスト自動チェックできない
+- 環境
+  - vite 環境変数：https://ja.vitejs.dev/guide/env-and-mode.html
