@@ -1,26 +1,21 @@
 import { APIError } from "../APIError";
+import { ENDPOINT, RESAS_Response, TOKEN } from "./_settings";
 
 export type Prefecture = {
   prefCode: number;
   prefName: string;
 };
 type Response = {
-  statusCode?: string;
-  description?: string;
-  message: string | null;
   result?: Prefecture[];
-};
+} & RESAS_Response;
 
 export const getPrefectures = async () => {
-  const response = await fetch(
-    "https://opendata.resas-portal.go.jp/api/v1/prefectures",
-    {
-      method: "GET",
-      headers: {
-        "X-API-KEY": import.meta.env.VITE_RESAS_API_TOKEN,
-      },
-    }
-  );
+  const response = await fetch(`${ENDPOINT}/api/v1/prefectures`, {
+    method: "GET",
+    headers: {
+      "X-API-KEY": TOKEN,
+    },
+  });
 
   const data: Response = await response.json();
 
