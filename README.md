@@ -19,6 +19,8 @@
     - https://github.com/testing-library/react-hooks-testing-library/issues/874
     - hooks-testing-library はマージされたらしい
 - npm install --save-dev ts-jest
+- npm install --save-dev jest-environment-jsdom
+  - Jest v28 以降なので追加
 
 ## 追加ファイル
 
