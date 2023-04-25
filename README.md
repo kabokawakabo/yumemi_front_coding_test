@@ -44,8 +44,9 @@ VITE_RESAS_API_TOKEN="自分のトークン"
   - インストールなど：https://storybook.js.org/docs/react/get-started/install
   - テストの際、 `npm run storybook` を実行し、別ターミナルで `npm run test-storybook` を実行しないと全テスト自動チェックできない
 - hook テスト環境構築
-  - 参考：https://zenn.dev/longbridge/articles/9e9758181c8846
+  - 環境構築参考：https://zenn.dev/longbridge/articles/9e9758181c8846
     - storybook を先にインストールしていたため、 npm では ts-jest のみインストールすれば良いっぽい?
     - 一部、自分の環境で追記不要な設定があった（setup ファイルなど）
+  - モック作成：https://developer.mamezou-tech.com/testing/jest/jest-mock/
 - 環境
   - vite 環境変数：https://ja.vitejs.dev/guide/env-and-mode.html
