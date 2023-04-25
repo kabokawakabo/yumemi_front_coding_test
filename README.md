@@ -14,6 +14,11 @@
 - npm install @storybook/test-runner --save-dev
 - npm install @storybook/testing-library @storybook/jest @storybook/addon-interactions --save-dev
   - storybook で interaction test を行う際必須
+- npm install --save-dev @testing-library/react
+  - hook テストで使用
+    - https://github.com/testing-library/react-hooks-testing-library/issues/874
+    - hooks-testing-library はマージされたらしい
+- npm install --save-dev ts-jest
 
 ## 追加ファイル
 
@@ -35,5 +40,8 @@ VITE_RESAS_API_TOKEN="自分のトークン"
 - storybook
   - インストールなど：https://storybook.js.org/docs/react/get-started/install
   - テストの際、 `npm run storybook` を実行し、別ターミナルで `npm run test-storybook` を実行しないと全テスト自動チェックできない
+- hook テスト
+  - 参考：https://zenn.dev/longbridge/articles/9e9758181c8846
+  - storybook を先にインストールしていたため、 npm では ts-jest のみインストールすれば良いっぽい?
 - 環境
   - vite 環境変数：https://ja.vitejs.dev/guide/env-and-mode.html
