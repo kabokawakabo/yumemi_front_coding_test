@@ -17,7 +17,7 @@ type Response = {
   };
 } & RESAS_Response;
 
-type getPopulationPerYearProps = {
+export type getPopulationPerYearProps = {
   prefCode: number;
   cityCode?: number; // undefinedで「すべての市区町村」を選択
   addArea?: string;
