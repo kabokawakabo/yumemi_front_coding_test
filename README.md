@@ -22,6 +22,9 @@
   - `jest.config.json`中の `transform`部分で使用
 - npm install --save-dev jest-environment-jsdom
   - Jest v28 以降なので追加必要
+- npm i vite-plugin-env-compatible
+  - 参考：https://qiita.com/diskszk/items/ed6362e35e15f2fd790e
+    - test 環境で import.meta が使えないため
 
 ## 追加ファイル
 
