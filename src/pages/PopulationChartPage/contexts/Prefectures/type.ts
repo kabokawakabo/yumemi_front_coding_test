@@ -8,3 +8,8 @@ export type Name2IdObj = {
 };
 
 export type onSuccessFunc = (data: Prefecture[]) => void;
+
+export type PrefecturesContextValue = {
+  getIdsFromNames: (names: string[]) => number[];
+  getNamesFromIds: (ids: number[]) => string[];
+};
