@@ -1,12 +1,9 @@
 import { useState } from "react";
 
-import type {
-  YearPopulationForLabel,
-  PopulationCompositionObj,
-  onSuccessFunc,
-} from "./type";
+import type { PopulationCompositionObj, onSuccessFunc } from "./type";
 import type { PopulationCompositionPerYear } from "../../../../api/RESAS/populationComposition";
 import { useGetPopulationPerYear } from "./query";
+import { createYearPopulationLabelKey } from "./otherFunc";
 
 const useOnSuccess = (
   populationComp: PopulationCompositionObj,
@@ -17,11 +14,7 @@ const useOnSuccess = (
       /// 既に追加済みのデータの場合は更新しない
       if (populationComp[prefCode] !== undefined) return;
 
-      const for_label_obj: YearPopulationForLabel = {};
-      for (const { label, data: years_data } of data) {
-        for_label_obj[label] = years_data;
-      }
-
+      const for_label_obj = createYearPopulationLabelKey(data);
       setPopulationComp({
         ...populationComp,
         [prefCode]: for_label_obj,
