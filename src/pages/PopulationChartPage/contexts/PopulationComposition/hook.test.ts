@@ -30,22 +30,23 @@ describe("contextテスト、PopulationComposition Hook", () => {
   });
 
   test("usePopulationCompositionData| state変更時 データが追加されるかテスト", () => {
+    const initial_prefCodes = [1, 2, 3, 4];
+    const new_prefCodes = [2, 5];
     const { result, rerender } = renderHook(
       (props) => usePopulationCompositionData(props),
       {
-        initialProps: [1, 2, 3, 4],
+        initialProps: initial_prefCodes,
       }
     );
 
-    const new_prefCodes = [2, 5];
     rerender(new_prefCodes);
-    const { result: result_fromIdsFunc } = renderHook(() =>
-      useGetPopulationCompositionFromIdsFunc(result.current)
-    );
-    const fromIdsFunc = result_fromIdsFunc.current;
-    for (const label of LABELS) {
-      const data_list = fromIdsFunc(new_prefCodes, label);
-      for (const data of data_list) {
+    const data_obj = result.current;
+    const all_prefCodes = [
+      ...new Set([...initial_prefCodes, ...new_prefCodes]),
+    ];
+    for (const prefCode of all_prefCodes) {
+      for (const label of LABELS) {
+        const data = data_obj[prefCode][label];
         expect(data).not.toBe(undefined);
       }
     }
