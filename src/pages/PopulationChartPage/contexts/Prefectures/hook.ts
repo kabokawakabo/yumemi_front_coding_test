@@ -2,18 +2,14 @@ import { useState } from "react";
 
 import type { Id2NameObj, Name2IdObj, onSuccessFunc } from "./type";
 import { useGetPrefecturesQuery } from "./query";
+import { createIdNameObj } from "./otherFunc";
 
 const useOnSuccess = (
   setId2Name: (d: Id2NameObj) => void,
   setName2Id: (d: Name2IdObj) => void
 ): onSuccessFunc => {
   return (data) => {
-    const id2Name: Id2NameObj = {};
-    const name2Id: Name2IdObj = {};
-    for (const { prefCode, prefName } of data) {
-      id2Name[prefCode] = prefName;
-      name2Id[prefName] = prefCode;
-    }
+    const { id2Name, name2Id } = createIdNameObj(data);
 
     setId2Name(id2Name);
     setName2Id(name2Id);
