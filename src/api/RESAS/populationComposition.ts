@@ -1,7 +1,7 @@
 import { APIError } from "../APIError";
 import { ENDPOINT, RESAS_Response, TOKEN } from "./_settings";
 
-type YearPopulation = {
+export type YearPopulation = {
   year: number;
   value: number;
   rate?: number;

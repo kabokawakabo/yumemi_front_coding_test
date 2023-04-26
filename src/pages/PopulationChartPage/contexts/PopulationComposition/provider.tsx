@@ -1,0 +1,30 @@
+import type { PopulationCompositionContextValue } from "./type.ts";
+import { PopulationCompositionContext } from "./context";
+import {
+  usePopulationCompositionLabels,
+  usePopulationCompositionData,
+  useGetPopulationCompositionFromIds,
+} from "./hook.ts";
+
+type PopulationCompositionProviderProps = {
+  prefCodes: number[];
+  children: React.ReactNode;
+};
+export const PopulationCompositionProvider: React.FC<
+  PopulationCompositionProviderProps
+> = ({ prefCodes, children }) => {
+  const populationComp = usePopulationCompositionData(prefCodes);
+  const labels = usePopulationCompositionLabels(populationComp);
+  const getDataFromIds = useGetPopulationCompositionFromIds(populationComp);
+
+  const value: PopulationCompositionContextValue = {
+    labels,
+    getDataFromIds,
+  };
+
+  return (
+    <PopulationCompositionContext.Provider value={value}>
+      {children}
+    </PopulationCompositionContext.Provider>
+  );
+};
