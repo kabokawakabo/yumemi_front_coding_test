@@ -14,7 +14,7 @@ export type onSuccessFunc = (
 ) => (d: PopulationCompositionPerYear[]) => void;
 
 export type PopulationCompositionContextValue = {
-  labels: string[];
+  labels: string[] | undefined;
   getDataFromIdsFunc: (
     prefCodes: number[],
     label: string

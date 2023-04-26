@@ -51,6 +51,15 @@ describe("contextテスト、PopulationComposition Hook", () => {
     }
   });
 
+  test("usePopulationCompositionLabels| データ初期値ではラベルを取り出さずundefinedを返すかテスト", () => {
+    const { result: result_labels } = renderHook(() =>
+      usePopulationCompositionLabels({})
+    );
+
+    const labels = result_labels.current;
+    expect(labels).toBe(undefined);
+  });
+
   test("usePopulationCompositionLabels| データにあるラベルを取り出せるかテスト", () => {
     const { result } = renderHook(
       (props) => usePopulationCompositionData(props),
@@ -58,13 +67,16 @@ describe("contextテスト、PopulationComposition Hook", () => {
         initialProps: [1, 2, 3, 4],
       }
     );
-    const { result: result_label } = renderHook(() =>
+    const { result: result_labels } = renderHook(() =>
       usePopulationCompositionLabels(result.current)
     );
 
+    const labels = result_labels.current;
+    expect(labels).not.toBe(undefined);
+
     for (const i of LABELS.keys()) {
       const true_label = LABELS[i];
-      const real_value = result_label.current[i];
+      const real_value = labels === undefined ? undefined : labels[i];
       expect(real_value).toBe(true_label);
     }
   });

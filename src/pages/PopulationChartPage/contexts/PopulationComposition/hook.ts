@@ -41,7 +41,7 @@ export const usePopulationCompositionLabels = (
     return Object.keys(popululationData);
   }
 
-  return [];
+  return undefined;
 };
 
 export const useGetPopulationCompositionFromIdsFunc = (
