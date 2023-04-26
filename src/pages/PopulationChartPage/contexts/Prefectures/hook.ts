@@ -34,13 +34,13 @@ export const usePrefectureData = () => {
 };
 
 export const useGetNamesFromIds = (id2Name: Id2NameObj) => {
-  return (ids: number[]) => {
+  return (ids: number[]): (string | undefined)[] => {
     return ids.map((id) => id2Name[id]);
   };
 };
 
 export const useGetIdsFromNames = (name2Id: Name2IdObj) => {
-  return (names: string[]) => {
+  return (names: string[]): (number | undefined)[] => {
     return names.map((name) => name2Id[name]);
   };
 };

@@ -43,7 +43,7 @@ describe("contextテスト、Prefecture Hook", () => {
       }
     );
 
-    const validate = (ids: number[], prop_obj: Name2IdObj) => {
+    const validate = (ids: (number | undefined)[], prop_obj: Name2IdObj) => {
       for (const i of new_names.keys()) {
         const name = new_names[i];
         const id = ids[i];
@@ -67,7 +67,7 @@ describe("contextテスト、Prefecture Hook", () => {
       { initialProps: name2Id }
     );
 
-    const validate = (names: string[], prop_obj: Id2NameObj) => {
+    const validate = (names: (string | undefined)[], prop_obj: Id2NameObj) => {
       for (const i of new_ids.keys()) {
         const id = new_ids[i];
         const name = names[i];
