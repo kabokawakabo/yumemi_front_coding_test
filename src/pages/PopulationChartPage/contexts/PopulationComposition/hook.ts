@@ -44,7 +44,7 @@ export const usePopulationCompositionLabels = (
   return [];
 };
 
-export const useGetPopulationCompositionFromIds = (
+export const useGetPopulationCompositionFromIdsFunc = (
   populationComp: PopulationCompositionObj
 ) => {
   return (prefCodes: number[], label: string) => {

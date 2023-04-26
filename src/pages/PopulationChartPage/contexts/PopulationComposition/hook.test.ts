@@ -3,7 +3,7 @@ import { renderHook } from "@testing-library/react";
 import {
   usePopulationCompositionData,
   usePopulationCompositionLabels,
-  useGetPopulationCompositionFromIds,
+  useGetPopulationCompositionFromIdsFunc,
 } from "./hook.ts";
 
 import {
@@ -39,10 +39,10 @@ describe("contextテスト、PopulationComposition Hook", () => {
 
     const new_prefCodes = [2, 5];
     rerender(new_prefCodes);
-    const { result: result_from_ids_data } = renderHook(() =>
-      useGetPopulationCompositionFromIds(result.current)
+    const { result: result_fromIdsFunc } = renderHook(() =>
+      useGetPopulationCompositionFromIdsFunc(result.current)
     );
-    const fromIdsFunc = result_from_ids_data.current;
+    const fromIdsFunc = result_fromIdsFunc.current;
     for (const label of LABELS) {
       const data_list = fromIdsFunc(new_prefCodes, label);
       for (const data of data_list) {
@@ -80,10 +80,10 @@ describe("contextテスト、PopulationComposition Hook", () => {
     );
 
     const new_prefCodes = [2, 5];
-    const { result: result_from_ids_data } = renderHook(() =>
-      useGetPopulationCompositionFromIds(result.current)
+    const { result: result_fromIdsFunc } = renderHook(() =>
+      useGetPopulationCompositionFromIdsFunc(result.current)
     );
-    const fromIdsFunc = result_from_ids_data.current;
+    const fromIdsFunc = result_fromIdsFunc.current;
     const data_list = fromIdsFunc(new_prefCodes, LABELS[0]);
     for (const i of new_prefCodes) {
       const prefCode = new_prefCodes[i];

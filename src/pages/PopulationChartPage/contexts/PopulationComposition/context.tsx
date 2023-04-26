@@ -3,6 +3,6 @@ import type { PopulationCompositionContextValue } from "./type";
 
 const defaultValue: PopulationCompositionContextValue = {
   labels: [],
-  getDataFromIds: () => [[]],
+  getDataFromIdsFunc: () => [[]],
 };
 export const PopulationCompositionContext = createContext(defaultValue);
