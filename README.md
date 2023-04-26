@@ -26,7 +26,7 @@
 ## 追加ファイル
 
 ```env: ./.env.development
-VITE_RESAS_API_TOKEN="自分のトークン"
+VITE_MY_ENV_RESAS_API_TOKEN="自分のトークン"
 ```
 
 ## 参考
