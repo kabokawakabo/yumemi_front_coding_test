@@ -2,8 +2,8 @@ import { renderHook } from "@testing-library/react";
 
 import type { Name2IdObj, Id2NameObj } from "./type.ts";
 import {
-  useGetIdsFromNames,
-  useGetNamesFromIds,
+  useGetIdsFromNamesFunc,
+  useGetNamesFromIdsFunc,
   usePrefectureData,
 } from "./hook.ts";
 
@@ -32,12 +32,12 @@ describe("contextテスト、Prefecture Hook", () => {
     }
   });
 
-  test("useGetIdsFromNames 、名前からIDを取り出せるかテスト", () => {
+  test("useGetIdsFromNamesFunc| 名前からIDを取り出せるかテスト", () => {
     const name2Id: Name2IdObj = { 北海道: 1, 青森: 2, 岩手: 3 };
     const new_name2Id: Name2IdObj = { ...name2Id, 宮城: 5 };
     const new_names = Object.keys(new_name2Id);
     const { result, rerender } = renderHook(
-      (props) => useGetIdsFromNames({ ...props }),
+      (props) => useGetIdsFromNamesFunc({ ...props }),
       {
         initialProps: name2Id,
       }
@@ -58,12 +58,12 @@ describe("contextテスト、Prefecture Hook", () => {
     validate(after_ids, new_name2Id);
   });
 
-  test("useGetNamesFromIds 、IDから名前を取り出せるか", () => {
+  test("useGetNamesFromIdsFunc| IDから名前を取り出せるか", () => {
     const name2Id: Id2NameObj = { 1: "北海道", 2: "青森", 3: "岩手" };
     const new_name2Id: Id2NameObj = { ...name2Id, 5: "宮城" };
     const new_ids = Object.keys(new_name2Id).map(Number);
     const { result, rerender } = renderHook(
-      (props) => useGetNamesFromIds({ ...props }),
+      (props) => useGetNamesFromIdsFunc({ ...props }),
       { initialProps: name2Id }
     );
 

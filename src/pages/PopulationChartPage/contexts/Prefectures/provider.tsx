@@ -1,8 +1,8 @@
 import type { PrefecturesContextValue } from "./type.ts";
 import { PrefecturesContext } from "./context";
 import {
-  useGetNamesFromIds,
-  useGetIdsFromNames,
+  useGetNamesFromIdsFunc,
+  useGetIdsFromNamesFunc,
   usePrefectureData,
 } from "./hook.ts";
 
@@ -13,12 +13,12 @@ export const PrefecturesProvider: React.FC<PrefecturesProviderProps> = ({
   children,
 }) => {
   const { id2Name, name2Id } = usePrefectureData();
-  const getNamesFromIds = useGetNamesFromIds(id2Name);
-  const getIdsFromNames = useGetIdsFromNames(name2Id);
+  const getNamesFromIdsFunc = useGetNamesFromIdsFunc(id2Name);
+  const getIdsFromNamesFunc = useGetIdsFromNamesFunc(name2Id);
 
   const value: PrefecturesContextValue = {
-    getNamesFromIds,
-    getIdsFromNames,
+    getNamesFromIdsFunc,
+    getIdsFromNamesFunc,
   };
 
   return (
