@@ -3,7 +3,7 @@ import type {
   PopulationCompositionPerYear,
 } from "../populationComposition";
 
-const MAX_POPULATION = 10 ^ 9; // NOTE: 東京の2045年は8桁代だったため、この値が入るように
+const MAX_POPULATION = 10 ** 9; // NOTE: 東京の2045年は8桁代だったため、この値が入るように
 const DECIMAL_PLACE_RATE = 100;
 export const LABELS = ["総人口", "年少人口", "生産年齢人口", "老年人口"];
 
