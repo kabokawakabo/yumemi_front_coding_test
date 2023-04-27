@@ -7,7 +7,7 @@ import type {
 } from "./type";
 import type { PopulationCompositionPerYear } from "../../../../api/RESAS/populationComposition";
 import { useGetPopulationPerYear } from "./query";
-import { createYearPopulationLabelKey } from "./otherFunc";
+import { createYearPopulationLabelKey } from "./mock";
 
 const createOnSuccessFunc = (
   populationComp: PopulationCompositionObj,

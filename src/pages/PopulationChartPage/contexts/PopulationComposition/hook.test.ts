@@ -11,7 +11,7 @@ import {
   createMockData,
 } from "../../../../api/RESAS/mock/populationCompositon.ts";
 import { useGetPopulationPerYear } from "./query.ts";
-import { createStateFromIds } from "./otherFunc.ts";
+import { createStateFromIds } from "./mock.ts";
 jest.mock("./query.ts");
 
 describe("contextテスト、PopulationComposition Hook", () => {
