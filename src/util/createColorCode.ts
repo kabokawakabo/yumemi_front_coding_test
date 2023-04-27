@@ -1,11 +1,17 @@
 import { ColorCodeInPickerError } from "./error/ColorCodeInPickerError";
 
 const RADIX = 16;
-const IN_MAX_VALUE = parseInt("ffffff", RADIX);
+export const IN_MAX_VALUE = parseInt("ffffff", RADIX); //テスト用にexport
+
+// テスト用にexportする
+export const _randomHexLen6 = (zero2Ex0: number) => {
+  /// NOTE: 1に限りなく近い値の場合、1の意味になる。結果、最大値(ffffff)が返る
+  return Math.floor(zero2Ex0 * IN_MAX_VALUE);
+};
 
 export const createRandomColorCode = () => {
   /// NOTE: 最大値も含めるため +1
-  const value = Math.floor(Math.random() * IN_MAX_VALUE + 1);
+  const value = _randomHexLen6(Math.random());
   return "#" + value.toString(RADIX);
 };
 
