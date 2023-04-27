@@ -1,3 +1,5 @@
+import { validateInPicker } from "../../util/colorCode";
+
 type LegendColorPickerProps = {
   label: string;
   value: string;
@@ -7,11 +9,13 @@ type LegendColorPickerProps = {
 };
 export const LegendColorPicker: React.FC<LegendColorPickerProps> = ({
   label,
-  value, // #f00 だとダメだった
+  value,
   setValue,
   className,
   style,
 }) => {
+  validateInPicker(value);
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setValue(value);
