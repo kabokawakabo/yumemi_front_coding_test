@@ -8,7 +8,7 @@ import type {
   onSuccessFunc,
 } from "./type";
 import { useGetPrefecturesQuery } from "./query";
-import { createIdNameObj } from "./otherFunc";
+import { createIdNameObj } from "./mock";
 
 const createOnSuccess = (
   setId2Name: (d: Id2NameObj) => void,
