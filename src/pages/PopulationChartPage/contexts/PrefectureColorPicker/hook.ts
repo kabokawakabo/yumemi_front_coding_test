@@ -19,8 +19,9 @@ const useSetRandomColorCodeIfUndefined = (
       new_obj[prefCode] = alreadyOrRandom;
     }
 
-    const isDifferentBefore =
-      Object.keys(new_obj).length !== Object.keys(id2Color).length;
+    const before_key_len = Object.keys(id2Color).length;
+    const after_key_len = Object.keys(new_obj).length;
+    const isDifferentBefore = before_key_len !== after_key_len;
     if (isDifferentBefore) setId2Color(new_obj);
   });
 };
