@@ -1,5 +1,6 @@
+import { createMockData } from "../../../../api/RESAS/mock/populationCompositon";
 import type { PopulationCompositionPerYear } from "../../../../api/RESAS/populationComposition";
-import type { YearPopulationForLabel } from "./type";
+import type { YearPopulationForLabel, PopulationCompositionObj } from "./type";
 
 export const createYearPopulationLabelKey = (
   data: PopulationCompositionPerYear[]
@@ -9,4 +10,14 @@ export const createYearPopulationLabelKey = (
     for_label_obj[label] = years_data;
   }
   return for_label_obj;
+};
+
+export const createStateFromIds = (prefCodes: number[]) => {
+  const return_obj: PopulationCompositionObj = {};
+  for (const prefCode of prefCodes) {
+    const mock_data = createMockData();
+    return_obj[prefCode] = createYearPopulationLabelKey(mock_data);
+  }
+
+  return return_obj;
 };
