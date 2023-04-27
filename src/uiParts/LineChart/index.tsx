@@ -11,7 +11,9 @@ import { createLine } from "./Line";
 import { LineInfo, LineChartDatum } from "./type";
 
 type LineChartProps = {
-  height: number;
+  height: number | string;
+  xLabel?: number | string;
+  yLabel?: number | string;
   data: LineChartDatum[];
   lineData: LineInfo[];
   hasTooltip?: boolean;
@@ -19,6 +21,8 @@ type LineChartProps = {
 };
 export const LineChart: React.FC<LineChartProps> = ({
   height,
+  xLabel,
+  yLabel,
   data,
   lineData,
   hasTooltip,
@@ -30,13 +34,16 @@ export const LineChart: React.FC<LineChartProps> = ({
     <ResponsiveContainer width="100%" height={height}>
       <RechartsLineChart
         data={data}
-        margin={{ top: 5, right: 20, bottom: 5, left: 20 }}
+        margin={{ top: 35, right: 20, bottom: 20, left: 20 }}
         title={title}
       >
         {Lines}
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-        <XAxis dataKey="name" />
-        <YAxis />
+        <XAxis
+          dataKey="name"
+          label={{ value: xLabel, position: "insideBottomRight", dy: 12 }}
+        />
+        <YAxis label={{ value: yLabel, position: "insideTopLeft", dy: -35 }} />
         {hasTooltip && <Tooltip />}
       </RechartsLineChart>
     </ResponsiveContainer>
