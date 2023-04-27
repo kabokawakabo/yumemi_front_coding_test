@@ -13,10 +13,11 @@ export type onSuccessFunc = (
   prefCode: number
 ) => (d: PopulationCompositionPerYear[]) => void;
 
+export type getDataFromIdsFunc = (
+  prefCodes: number[],
+  label: string
+) => (YearPopulation[] | undefined)[];
 export type ContextValue = {
   labels: string[] | undefined;
-  getDataFromIdsFunc: (
-    prefCodes: number[],
-    label: string
-  ) => (YearPopulation[] | undefined)[];
+  getDataFromIdsFunc: getDataFromIdsFunc;
 };
