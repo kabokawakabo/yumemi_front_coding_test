@@ -8,21 +8,12 @@ import {
 } from "./hook.ts";
 
 import { MockData } from "../../../../api/RESAS/mock/prefectures";
-import { useGetPrefecturesQuery } from "./query.ts";
+import { createMockQuery } from "./mock.ts";
 jest.mock("./query.ts");
 
 describe("contextテスト、Prefecture Hook", () => {
   test("apiを呼び出した際、データを更新。prefCode(ID)からname、その逆を取り出せるかテスト", () => {
-    const mock = useGetPrefecturesQuery as jest.MockedFunction<
-      typeof useGetPrefecturesQuery
-    >;
-    let first_update = true;
-    mock.mockImplementation((onSuccess) => {
-      /// NOTE: 通常queryのSuccess時に呼ぶので無限ループにならない。モックでは起きるので書き込み1回に制限
-      if (!first_update) return;
-      onSuccess(MockData);
-      first_update = false;
-    });
+    createMockQuery(MockData);
 
     const { result } = renderHook(() => usePrefectureData());
     const { id2Name, name2Id } = result.current;
