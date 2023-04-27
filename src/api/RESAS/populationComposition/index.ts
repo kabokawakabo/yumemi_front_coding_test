@@ -1,15 +1,10 @@
-import { APIError } from "../APIError";
-import { ENDPOINT, RESAS_Response, TOKEN } from "./_settings";
+import { APIError } from "../../../util/error/APIError";
+import { ENDPOINT, RESAS_Response, TOKEN } from "../_settings";
+import type {
+  PopulationCompositionPerYear,
+  getPopulationPerYearProps,
+} from "./type";
 
-export type YearPopulation = {
-  year: number;
-  value: number;
-  rate?: number;
-};
-export type PopulationCompositionPerYear = {
-  label: string;
-  data: YearPopulation[];
-};
 type Response = {
   result?: {
     boundaryYear: number;
@@ -17,11 +12,6 @@ type Response = {
   };
 } & RESAS_Response;
 
-export type getPopulationPerYearProps = {
-  prefCode: number;
-  cityCode?: number; // undefinedで「すべての市区町村」を選択
-  addArea?: string;
-};
 const getParams = (props: getPopulationPerYearProps) => {
   const { prefCode, cityCode, addArea } = props;
 

@@ -1,4 +1,4 @@
-import type { Prefecture } from "../prefectures";
+import type { Prefecture } from "./type";
 
 export const MockData: Prefecture[] = [
   {

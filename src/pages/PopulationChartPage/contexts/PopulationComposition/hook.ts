@@ -5,7 +5,7 @@ import type {
   getDataFromIdFunc,
   onSuccessFunc,
 } from "./type";
-import type { PopulationCompositionPerYear } from "../../../../api/RESAS/populationComposition";
+import type { PopulationCompositionPerYear } from "../../../../api/RESAS/populationComposition/type";
 import { useGetPopulationPerYear } from "./query";
 import { createYearPopulationLabelKey } from "./mock";
 

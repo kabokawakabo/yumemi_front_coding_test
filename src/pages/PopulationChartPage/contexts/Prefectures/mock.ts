@@ -1,5 +1,5 @@
 import { useGetPrefecturesQuery } from "./query";
-import type { Prefecture } from "../../../../api/RESAS/prefectures";
+import type { Prefecture } from "../../../../api/RESAS/prefectures/type";
 import type { Id2NameObj, Name2IdObj, onSuccessFunc } from "./type";
 
 export const createIdNameObj = (data: Prefecture[]) => {

@@ -7,7 +7,7 @@ import {
   usePrefectureData,
 } from "./hook.ts";
 
-import { MockData } from "../../../../api/RESAS/mock/prefectures";
+import { MockData } from "../../../../api/RESAS/prefectures/mock.ts";
 import { createMockQuery } from "./mock.ts";
 jest.mock("./query.ts");
 

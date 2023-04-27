@@ -1,4 +1,4 @@
-import type { Prefecture } from "../../../../api/RESAS/prefectures";
+import type { Prefecture } from "../../../../api/RESAS/prefectures/type";
 
 export type Id2NameObj = {
   [key: number]: string;

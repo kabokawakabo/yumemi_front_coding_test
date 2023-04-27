@@ -1,7 +1,7 @@
 import type {
   PopulationCompositionPerYear,
   YearPopulation,
-} from "../../../../api/RESAS/populationComposition";
+} from "../../../../api/RESAS/populationComposition/type";
 
 export type YearPopulationForLabel = {
   [label: string]: YearPopulation[];

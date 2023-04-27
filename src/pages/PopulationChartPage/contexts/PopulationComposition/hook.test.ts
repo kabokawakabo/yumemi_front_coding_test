@@ -6,7 +6,7 @@ import {
   createGetPopulationCompositionFromIdFunc,
 } from "./hook.ts";
 
-import { LABELS } from "../../../../api/RESAS/mock/populationCompositon.ts";
+import { LABELS } from "../../../../api/RESAS/populationComposition/mock.ts";
 import { createStateFromIds, createMockQuery } from "./mock.ts";
 jest.mock("./query.ts");
 
