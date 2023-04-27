@@ -9,7 +9,7 @@ export type Name2IdObj = {
 
 export type onSuccessFunc = (data: Prefecture[]) => void;
 
-export type PrefecturesContextValue = {
+export type ContextValue = {
   getIdsFromNamesFunc: (names: string[]) => (number | undefined)[];
   getNamesFromIdsFunc: (ids: number[]) => (string | undefined)[];
 };

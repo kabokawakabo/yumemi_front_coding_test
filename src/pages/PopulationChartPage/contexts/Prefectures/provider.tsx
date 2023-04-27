@@ -1,4 +1,4 @@
-import type { PrefecturesContextValue } from "./type.ts";
+import type { ContextValue } from "./type.ts";
 import { PrefecturesContext } from "./context";
 import {
   useGetNamesFromIdsFunc,
@@ -16,7 +16,7 @@ export const PrefecturesProvider: React.FC<PrefecturesProviderProps> = ({
   const getNamesFromIdsFunc = useGetNamesFromIdsFunc(id2Name);
   const getIdsFromNamesFunc = useGetIdsFromNamesFunc(name2Id);
 
-  const value: PrefecturesContextValue = {
+  const value: ContextValue = {
     getNamesFromIdsFunc,
     getIdsFromNamesFunc,
   };

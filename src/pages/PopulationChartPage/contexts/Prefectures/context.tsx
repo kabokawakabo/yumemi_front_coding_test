@@ -1,7 +1,7 @@
 import { createContext } from "react";
-import type { PrefecturesContextValue } from "./type";
+import type { ContextValue } from "./type";
 
-const defaultValue: PrefecturesContextValue = {
+const defaultValue: ContextValue = {
   getIdsFromNamesFunc: () => [],
   getNamesFromIdsFunc: () => [],
 };
