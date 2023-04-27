@@ -9,6 +9,7 @@ import {
 
 import { createLine } from "./Line";
 import { LineInfo, LineChartDatum } from "./type";
+import { jaTickFormatter } from "./util";
 
 type LineChartProps = {
   height: number | string;
@@ -43,7 +44,10 @@ export const LineChart: React.FC<LineChartProps> = ({
           dataKey="name"
           label={{ value: xLabel, position: "insideBottomRight", dy: 12 }}
         />
-        <YAxis label={{ value: yLabel, position: "insideTopLeft", dy: -35 }} />
+        <YAxis
+          tickFormatter={(value) => jaTickFormatter(value)}
+          label={{ value: yLabel, position: "insideTopLeft", dy: -35 }}
+        />
         {hasTooltip && <Tooltip />}
       </RechartsLineChart>
     </ResponsiveContainer>
