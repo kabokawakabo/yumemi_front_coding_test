@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import type { onSuccessFunc } from "./type";
-import type { Prefecture } from "../../../../api/RESAS/prefectures";
+import type { Prefecture } from "../../../../api/RESAS/prefectures/type";
 import queryKeys from "../../../../api/queryKeys";
 import { getPrefectures } from "../../../../api/RESAS/prefectures";
 
