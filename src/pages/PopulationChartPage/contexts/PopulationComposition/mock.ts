@@ -1,3 +1,4 @@
+import { useGetPopulationPerYear } from "./query";
 import { createMockData } from "../../../../api/RESAS/mock/populationCompositon";
 import type { PopulationCompositionPerYear } from "../../../../api/RESAS/populationComposition";
 import type { YearPopulationForLabel, PopulationCompositionObj } from "./type";
@@ -20,4 +21,26 @@ export const createStateFromIds = (prefCodes: number[]) => {
   }
 
   return return_obj;
+};
+
+const createMockQueryFunc = (): useGetPopulationPerYear => {
+  return (prefCodes, onSuccessFunc) => {
+    /// NOTE: keyが存在する場合はstate更新しないので1度の更新で止まる（無限ループにならない）
+    prefCodes.map((prefCode) => {
+      const onSuccess = onSuccessFunc(prefCode);
+      const mockData = createMockData();
+      onSuccess(mockData);
+    });
+  };
+};
+
+/**
+ * NOTE: 関数呼び出しと同時に、テストファイルに `jest.mock(Prefectures/query.tsのパス)` を記述する必要あり
+ * （同じファイルの方が相対パスがわかりやすいが、モック成立するためには別ファイルのimportが必須。他の方法があるかもしれない。）
+ */
+export const createMockQuery = () => {
+  const mock = useGetPopulationPerYear as jest.MockedFunction<
+    typeof useGetPopulationPerYear
+  >;
+  mock.mockImplementation(createMockQueryFunc());
 };

@@ -6,27 +6,13 @@ import {
   createGetPopulationCompositionFromIdFunc,
 } from "./hook.ts";
 
-import {
-  LABELS,
-  createMockData,
-} from "../../../../api/RESAS/mock/populationCompositon.ts";
-import { useGetPopulationPerYear } from "./query.ts";
-import { createStateFromIds } from "./mock.ts";
+import { LABELS } from "../../../../api/RESAS/mock/populationCompositon.ts";
+import { createStateFromIds, createMockQuery } from "./mock.ts";
 jest.mock("./query.ts");
 
 describe("contextテスト、PopulationComposition Hook", () => {
   test("usePopulationCompositionData| state変更時 データが追加されるかテスト", () => {
-    const mock = useGetPopulationPerYear as jest.MockedFunction<
-      typeof useGetPopulationPerYear
-    >;
-    mock.mockImplementation((prefCodes, onSuccessFunc) => {
-      /// NOTE: keyが存在する場合はstate更新しないので1度の更新で止まる（無限ループにならない）
-      prefCodes.map((prefCode) => {
-        const onSuccess = onSuccessFunc(prefCode);
-        const mockData = createMockData();
-        onSuccess(mockData);
-      });
-    });
+    createMockQuery();
 
     const initial_prefCodes = [1, 2, 3, 4];
     const new_prefCodes = [2, 5];

@@ -4,9 +4,13 @@ import type { onSuccessFunc } from "./type";
 import { getPopulationPerYear } from "../../../../api/RESAS/populationComposition";
 import queryKeys from "../../../../api/queryKeys";
 
-export const useGetPopulationPerYear = (
+export type useGetPopulationPerYear = (
   prefCodes: number[],
   onSuccessFunc: onSuccessFunc
+) => void;
+export const useGetPopulationPerYear: useGetPopulationPerYear = (
+  prefCodes,
+  onSuccessFunc
 ) => {
   useQueries({
     queries: prefCodes.map((prefCode) => {
