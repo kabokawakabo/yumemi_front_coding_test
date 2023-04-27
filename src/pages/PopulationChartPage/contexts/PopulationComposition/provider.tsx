@@ -1,4 +1,4 @@
-import type { PopulationCompositionContextValue } from "./type.ts";
+import type { ContextValue } from "./type.ts";
 import { PopulationCompositionContext } from "./context";
 import {
   usePopulationCompositionLabels,
@@ -18,7 +18,7 @@ export const PopulationCompositionProvider: React.FC<
   const getDataFromIdsFunc =
     useGetPopulationCompositionFromIdsFunc(populationComp);
 
-  const value: PopulationCompositionContextValue = {
+  const value: ContextValue = {
     labels,
     getDataFromIdsFunc,
   };

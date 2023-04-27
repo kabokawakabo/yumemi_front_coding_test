@@ -1,7 +1,7 @@
 import { createContext } from "react";
-import type { PopulationCompositionContextValue } from "./type";
+import type { ContextValue } from "./type";
 
-const defaultValue: PopulationCompositionContextValue = {
+const defaultValue: ContextValue = {
   labels: [],
   getDataFromIdsFunc: () => [[]],
 };
