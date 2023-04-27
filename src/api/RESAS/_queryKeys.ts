@@ -1,4 +1,4 @@
-import { getPopulationPerYearProps } from "./populationComposition";
+import type { getPopulationPerYearProps } from "./populationComposition/type";
 
 const queryKeys = {
   prefectures: () => ["prefectures"],

@@ -1,6 +1,6 @@
 import { useGetPopulationPerYear } from "./query";
-import { createMockData } from "../../../../api/RESAS/mock/populationCompositon";
-import type { PopulationCompositionPerYear } from "../../../../api/RESAS/populationComposition";
+import { createMockData } from "../../../../api/RESAS/populationComposition/mock";
+import type { PopulationCompositionPerYear } from "../../../../api/RESAS/populationComposition/type";
 import type { YearPopulationForLabel, PopulationCompositionObj } from "./type";
 
 export const createYearPopulationLabelKey = (
