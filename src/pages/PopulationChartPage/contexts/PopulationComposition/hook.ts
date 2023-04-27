@@ -9,7 +9,7 @@ import type { PopulationCompositionPerYear } from "../../../../api/RESAS/populat
 import { useGetPopulationPerYear } from "./query";
 import { createYearPopulationLabelKey } from "./otherFunc";
 
-const useOnSuccess = (
+const createOnSuccessFunc = (
   populationComp: PopulationCompositionObj,
   setPopulationComp: (d: PopulationCompositionObj) => void
 ): onSuccessFunc => {
@@ -30,14 +30,14 @@ const useOnSuccess = (
 export const usePopulationCompositionData = (prefCodes: number[]) => {
   const [populationComp, setPolulationComp] =
     useState<PopulationCompositionObj>({});
-  const onSuccessFunc = useOnSuccess(populationComp, setPolulationComp);
+  const onSuccessFunc = createOnSuccessFunc(populationComp, setPolulationComp);
 
   useGetPopulationPerYear(prefCodes, onSuccessFunc);
 
   return populationComp;
 };
 
-export const usePopulationCompositionLabels = (
+export const getPopulationCompositionLabels = (
   populationComp: PopulationCompositionObj
 ) => {
   /// どれかの県データに含まれる、人口構成データのラベル（総人口 など）を取り出す
@@ -48,7 +48,7 @@ export const usePopulationCompositionLabels = (
   return undefined;
 };
 
-export const useGetPopulationCompositionFromIdFunc = (
+export const createGetPopulationCompositionFromIdFunc = (
   populationComp: PopulationCompositionObj
 ): getDataFromIdFunc => {
   return (prefCode, label) => {

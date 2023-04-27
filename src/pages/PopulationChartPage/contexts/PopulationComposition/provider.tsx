@@ -1,9 +1,9 @@
 import type { ContextValue } from "./type.ts";
 import { PopulationCompositionContext } from "./context";
 import {
-  usePopulationCompositionLabels,
+  getPopulationCompositionLabels,
   usePopulationCompositionData,
-  useGetPopulationCompositionFromIdFunc,
+  createGetPopulationCompositionFromIdFunc,
 } from "./hook.ts";
 
 type PopulationCompositionProviderProps = {
@@ -14,9 +14,9 @@ export const PopulationCompositionProvider: React.FC<
   PopulationCompositionProviderProps
 > = ({ prefCodes, children }) => {
   const populationComp = usePopulationCompositionData(prefCodes);
-  const labels = usePopulationCompositionLabels(populationComp);
+  const labels = getPopulationCompositionLabels(populationComp);
   const getDataFromIdFunc =
-    useGetPopulationCompositionFromIdFunc(populationComp);
+    createGetPopulationCompositionFromIdFunc(populationComp);
 
   const value: ContextValue = {
     labels,

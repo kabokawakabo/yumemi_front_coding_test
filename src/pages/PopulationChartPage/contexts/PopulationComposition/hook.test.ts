@@ -2,8 +2,8 @@ import { renderHook } from "@testing-library/react";
 
 import {
   usePopulationCompositionData,
-  usePopulationCompositionLabels,
-  useGetPopulationCompositionFromIdFunc,
+  getPopulationCompositionLabels,
+  createGetPopulationCompositionFromIdFunc,
 } from "./hook.ts";
 
 import {
@@ -50,18 +50,14 @@ describe("contextテスト、PopulationComposition Hook", () => {
     }
   });
 
-  test("usePopulationCompositionLabels| データ初期値ではラベルを取り出さずundefinedを返すかテスト", () => {
-    const { result } = renderHook(() => usePopulationCompositionLabels({}));
-
-    const labels = result.current;
+  test("getPopulationCompositionLabels| データ初期値ではラベルを取り出さずundefinedを返すかテスト", () => {
+    const labels = getPopulationCompositionLabels({});
     expect(labels).toBe(undefined);
   });
 
-  test("usePopulationCompositionLabels| データにあるラベルを取り出せるかテスト", () => {
+  test("getPopulationCompositionLabels| データにあるラベルを取り出せるかテスト", () => {
     const state = createStateFromIds([1, 2, 3, 4]);
-    const { result } = renderHook(() => usePopulationCompositionLabels(state));
-
-    const labels = result.current;
+    const labels = getPopulationCompositionLabels(state);
     expect(labels).not.toBe(undefined);
 
     for (const i of LABELS.keys()) {
@@ -71,18 +67,16 @@ describe("contextテスト、PopulationComposition Hook", () => {
     }
   });
 
-  test("useGetPopulationCompositionFromId| 作成していないIDを調べた際　undefinedを返すかテスト", () => {
+  test("createGetPopulationCompositionFromIdFunc| 作成していないIDを調べた際　undefinedを返すかテスト", () => {
     const initial_prefCodes = [1, 2, 3, 4];
     const new_prefCodes = [2, 5];
     const initial_prefCodes_set = new Set(initial_prefCodes);
     const state = createStateFromIds(initial_prefCodes);
 
-    const { result } = renderHook(() =>
-      useGetPopulationCompositionFromIdFunc(state)
-    );
+    const getDataFromIdFunc = createGetPopulationCompositionFromIdFunc(state);
     for (const i of new_prefCodes) {
       const prefCode = new_prefCodes[i];
-      const value = result.current(prefCode, LABELS[0]);
+      const value = getDataFromIdFunc(prefCode, LABELS[0]);
 
       const expect_value = expect(value);
       if (initial_prefCodes_set.has(prefCode)) expect_value.not.toBe(undefined);
