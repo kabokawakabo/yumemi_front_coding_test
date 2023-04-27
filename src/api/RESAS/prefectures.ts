@@ -1,4 +1,4 @@
-import { APIError } from "../APIError";
+import { APIError } from "../../util/error/APIError";
 import { ENDPOINT, RESAS_Response, TOKEN } from "./_settings";
 
 export type Prefecture = {
