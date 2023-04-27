@@ -10,7 +10,7 @@ import type {
 import { useGetPrefecturesQuery } from "./query";
 import { createIdNameObj } from "./otherFunc";
 
-const useOnSuccess = (
+const createOnSuccess = (
   setId2Name: (d: Id2NameObj) => void,
   setName2Id: (d: Name2IdObj) => void
 ): onSuccessFunc => {
@@ -25,7 +25,7 @@ const useOnSuccess = (
 export const usePrefectureData = () => {
   const [id2Name, setId2Name] = useState<Id2NameObj>({});
   const [name2Id, setName2Id] = useState<Name2IdObj>({});
-  const onSuccess = useOnSuccess(setId2Name, setName2Id);
+  const onSuccess = createOnSuccess(setId2Name, setName2Id);
 
   useGetPrefecturesQuery(onSuccess);
 
@@ -35,13 +35,13 @@ export const usePrefectureData = () => {
   };
 };
 
-export const useGetNameFromIdFunc = (
+export const createGetNameFromIdFunc = (
   id2Name: Id2NameObj
 ): getNameFromIdFunc => {
   return (id) => id2Name[id];
 };
 
-export const useGetIdFromNameFunc = (
+export const createGetIdFromNameFunc = (
   name2Id: Name2IdObj
 ): getIdFromNameFunc => {
   return (name) => name2Id[name];
