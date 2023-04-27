@@ -19,3 +19,19 @@
     - PopulationComposition
       - PrefectureLabelSelect
     - PrefectureColorPicker
+
+## 階層内部ファイル
+
+| ファイル名 | 内容                                                                                                        |
+| ---------- | ----------------------------------------------------------------------------------------------------------- |
+| context    | createContext の返り値(useContext に利用など)                                                               |
+| ----       | ----                                                                                                        |
+| hook       | provider ファイルで value に入れる値、関数を作成                                                            |
+| ----       | ----                                                                                                        |
+| mock       | api で取得するデータ（or そのモックデータ）から　 context 内部の state を作る関数。query 関数のモックを作る |
+| ----       | ----                                                                                                        |
+| provider   | context の provider                                                                                         |
+| ----       | ----                                                                                                        |
+| query      | api を叩く部分を独立させたもの                                                                              |
+| ----       | ----                                                                                                        |
+| type       | フォルダ内部の汎用的なタイプをまとめる場所                                                                  |
