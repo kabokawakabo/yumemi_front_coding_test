@@ -3,8 +3,8 @@ import { useState } from "react";
 import type {
   Id2NameObj,
   Name2IdObj,
-  getIdsFromNamesFunc,
-  getNamesFromIdsFunc,
+  getIdFromNameFunc,
+  getNameFromIdFunc,
   onSuccessFunc,
 } from "./type";
 import { useGetPrefecturesQuery } from "./query";
@@ -35,18 +35,14 @@ export const usePrefectureData = () => {
   };
 };
 
-export const useGetNamesFromIdsFunc = (
+export const useGetNameFromIdFunc = (
   id2Name: Id2NameObj
-): getNamesFromIdsFunc => {
-  return (ids) => {
-    return ids.map((id) => id2Name[id]);
-  };
+): getNameFromIdFunc => {
+  return (id) => id2Name[id];
 };
 
-export const useGetIdsFromNamesFunc = (
+export const useGetIdFromNameFunc = (
   name2Id: Name2IdObj
-): getIdsFromNamesFunc => {
-  return (names) => {
-    return names.map((name) => name2Id[name]);
-  };
+): getIdFromNameFunc => {
+  return (name) => name2Id[name];
 };

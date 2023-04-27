@@ -9,9 +9,9 @@ export type Name2IdObj = {
 
 export type onSuccessFunc = (data: Prefecture[]) => void;
 
-export type getIdsFromNamesFunc = (names: string[]) => (number | undefined)[];
-export type getNamesFromIdsFunc = (ids: number[]) => (string | undefined)[];
+export type getIdFromNameFunc = (name: string) => number | undefined;
+export type getNameFromIdFunc = (id: number) => string | undefined;
 export type ContextValue = {
-  getIdsFromNamesFunc: getIdsFromNamesFunc;
-  getNamesFromIdsFunc: getNamesFromIdsFunc;
+  getIdFromNameFunc: getIdFromNameFunc;
+  getNameFromIdFunc: getNameFromIdFunc;
 };
