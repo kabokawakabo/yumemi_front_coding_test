@@ -15,8 +15,7 @@ import { createStateFromIds } from "./otherFunc.ts";
 jest.mock("./query.ts");
 
 describe("contextテスト、PopulationComposition Hook", () => {
-  beforeEach(() => {
-    /// データ整形後のobjデータを使って以降の操作をするため、各実行前にモックを定義
+  test("usePopulationCompositionData| state変更時 データが追加されるかテスト", () => {
     const mock = useGetPopulationPerYear as jest.MockedFunction<
       typeof useGetPopulationPerYear
     >;
@@ -28,9 +27,7 @@ describe("contextテスト、PopulationComposition Hook", () => {
         onSuccess(mockData);
       });
     });
-  });
 
-  test("usePopulationCompositionData| state変更時 データが追加されるかテスト", () => {
     const initial_prefCodes = [1, 2, 3, 4];
     const new_prefCodes = [2, 5];
     const { result, rerender } = renderHook(
