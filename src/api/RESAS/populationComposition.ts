@@ -1,7 +1,7 @@
 import { APIError } from "../APIError";
 import { ENDPOINT, RESAS_Response, TOKEN } from "./_settings";
 
-type YearPopulation = {
+export type YearPopulation = {
   year: number;
   value: number;
   rate?: number;
@@ -17,7 +17,7 @@ type Response = {
   };
 } & RESAS_Response;
 
-type getPopulationPerYearProps = {
+export type getPopulationPerYearProps = {
   prefCode: number;
   cityCode?: number; // undefinedで「すべての市区町村」を選択
   addArea?: string;
