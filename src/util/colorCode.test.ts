@@ -1,11 +1,7 @@
 import { ColorCodeInPickerError } from "./error/ColorCodeInPickerError.ts";
-import {
-  IN_MAX_VALUE,
-  _randomHexLen6,
-  validateInPicker,
-} from "./createColorCode.ts";
+import { IN_MAX_VALUE, _randomHexLen6, validateInPicker } from "./colorCode.ts";
 
-describe("utilテスト、createColorCode", () => {
+describe("utilテスト、colorCode", () => {
   test("create| ランダム結果0の時、最小値0を作成", () => {
     const value = _randomHexLen6(0);
     expect(value).toBe(0);
