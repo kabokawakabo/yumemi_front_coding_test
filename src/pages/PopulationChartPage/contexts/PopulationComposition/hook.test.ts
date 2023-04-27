@@ -3,7 +3,7 @@ import { renderHook } from "@testing-library/react";
 import {
   usePopulationCompositionData,
   usePopulationCompositionLabels,
-  useGetPopulationCompositionFromIdsFunc,
+  useGetPopulationCompositionFromIdFunc,
 } from "./hook.ts";
 
 import {
@@ -82,7 +82,7 @@ describe("contextテスト、PopulationComposition Hook", () => {
     }
   });
 
-  test("useGetPopulationCompositionFromIds| 作成していないIDを調べた際　undefinedを返すかテスト", () => {
+  test("useGetPopulationCompositionFromId| 作成していないIDを調べた際　undefinedを返すかテスト", () => {
     const initial_prefCodes = [1, 2, 3, 4];
     const initial_prefCodes_set = new Set(initial_prefCodes);
     const { result } = renderHook(
@@ -93,14 +93,12 @@ describe("contextテスト、PopulationComposition Hook", () => {
     );
 
     const new_prefCodes = [2, 5];
-    const { result: result_fromIdsFunc } = renderHook(() =>
-      useGetPopulationCompositionFromIdsFunc(result.current)
+    const { result: result_fromIdFunc } = renderHook(() =>
+      useGetPopulationCompositionFromIdFunc(result.current)
     );
-    const fromIdsFunc = result_fromIdsFunc.current;
-    const data_list = fromIdsFunc(new_prefCodes, LABELS[0]);
     for (const i of new_prefCodes) {
       const prefCode = new_prefCodes[i];
-      const value = data_list[i];
+      const value = result_fromIdFunc.current(prefCode, LABELS[0]);
 
       const expect_value = expect(value);
       if (initial_prefCodes_set.has(prefCode)) expect_value.not.toBe(undefined);

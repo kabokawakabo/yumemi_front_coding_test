@@ -3,7 +3,7 @@ import { PopulationCompositionContext } from "./context";
 import {
   usePopulationCompositionLabels,
   usePopulationCompositionData,
-  useGetPopulationCompositionFromIdsFunc,
+  useGetPopulationCompositionFromIdFunc,
 } from "./hook.ts";
 
 type PopulationCompositionProviderProps = {
@@ -15,12 +15,12 @@ export const PopulationCompositionProvider: React.FC<
 > = ({ prefCodes, children }) => {
   const populationComp = usePopulationCompositionData(prefCodes);
   const labels = usePopulationCompositionLabels(populationComp);
-  const getDataFromIdsFunc =
-    useGetPopulationCompositionFromIdsFunc(populationComp);
+  const getDataFromIdFunc =
+    useGetPopulationCompositionFromIdFunc(populationComp);
 
   const value: ContextValue = {
     labels,
-    getDataFromIdsFunc,
+    getDataFromIdFunc,
   };
 
   return (

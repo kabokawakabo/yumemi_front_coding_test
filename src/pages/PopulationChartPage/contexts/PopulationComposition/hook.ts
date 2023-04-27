@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import type {
   PopulationCompositionObj,
-  getDataFromIdsFunc,
+  getDataFromIdFunc,
   onSuccessFunc,
 } from "./type";
 import type { PopulationCompositionPerYear } from "../../../../api/RESAS/populationComposition";
@@ -48,15 +48,13 @@ export const usePopulationCompositionLabels = (
   return undefined;
 };
 
-export const useGetPopulationCompositionFromIdsFunc = (
+export const useGetPopulationCompositionFromIdFunc = (
   populationComp: PopulationCompositionObj
-): getDataFromIdsFunc => {
-  return (prefCodes, label) => {
-    return prefCodes.map((prefCode) => {
-      const data_of_prefCode = populationComp[prefCode];
-      if (data_of_prefCode === undefined) return undefined;
+): getDataFromIdFunc => {
+  return (prefCode, label) => {
+    const data_of_prefCode = populationComp[prefCode];
+    if (data_of_prefCode === undefined) return undefined;
 
-      return data_of_prefCode[label];
-    });
+    return data_of_prefCode[label];
   };
 };
