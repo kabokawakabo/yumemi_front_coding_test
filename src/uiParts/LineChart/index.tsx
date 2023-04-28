@@ -9,7 +9,10 @@ import {
 
 import { createLine } from "./Line";
 import { LineInfo, LineChartDatum } from "./type";
-import { addIntRankSuffixWithSignificantDigit } from "./util";
+import {
+  addIntRankSuffixWithSignificantDigit,
+  addIntUSRankSuffix,
+} from "./util";
 
 type LineChartProps = {
   height: number | string;
@@ -30,6 +33,10 @@ export const LineChart: React.FC<LineChartProps> = ({
   title,
 }) => {
   const Lines = lineData.map((d) => createLine(d));
+  function tooltipFormatter<T>(v: T) {
+    if (typeof v === "number") return addIntUSRankSuffix(v);
+    return v;
+  }
 
   return (
     <ResponsiveContainer width="100%" height={height}>
@@ -50,7 +57,7 @@ export const LineChart: React.FC<LineChartProps> = ({
           }
           label={{ value: yLabel, position: "insideTopLeft", dy: -35 }}
         />
-        {hasTooltip && <Tooltip />}
+        {hasTooltip && <Tooltip formatter={tooltipFormatter} />}
       </RechartsLineChart>
     </ResponsiveContainer>
   );
