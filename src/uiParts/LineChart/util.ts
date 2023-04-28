@@ -28,7 +28,7 @@ export const createUnitList = (label: string) => {
 
 const isAllZeroStr = (str: string) => str.split("").every((d) => d === "0");
 
-export const addRankSuffix = (label_num: number) => {
+export const addIntRankSuffix = (label_num: number) => {
   const label = label_num + "";
   const unit_list = createUnitList(label);
 
@@ -46,7 +46,7 @@ export const addRankSuffix = (label_num: number) => {
   return new_label;
 };
 
-export const addRankSuffixWithSignificantDigit = (
+export const addIntRankSuffixWithSignificantDigit = (
   label_num: number,
   tol_digit: number
 ) => {
