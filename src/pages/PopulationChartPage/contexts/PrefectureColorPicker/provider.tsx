@@ -2,12 +2,12 @@ import type { ContextValue } from "./type";
 import { PrefectureColorPickerContext } from "./context";
 import { usePrefectureColorPickerData } from "./hook";
 
-type PrefectureCompositionProviderProps = {
+type PrefectureColorPickerProviderProps = {
   prefCodes: number[];
   children: React.ReactNode;
 };
-export const PrefectureCompositionProvider: React.FC<
-  PrefectureCompositionProviderProps
+export const PrefectureColorPickerProvider: React.FC<
+  PrefectureColorPickerProviderProps
 > = ({ prefCodes, children }) => {
   const { getColorCodeFunc, setColorCodeFunc } =
     usePrefectureColorPickerData(prefCodes);
