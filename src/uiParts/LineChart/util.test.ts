@@ -34,7 +34,7 @@ describe("LineChart ui", () => {
     expect(addIntRankSuffixWithSignificantDigit(10 ** 9, 0)).toBe("10億");
   });
 
-  test("addIntUSRankSuffix| 英語圏の位書き方になるかチェック", () => {
+  test("addIntUSRankSuffix| 英語圏の数字位風書き方になるかチェック", () => {
     expect(addIntRankSuffix(10 ** 2)).toBe("100");
     expect(addIntUSRankSuffix(10 ** 4)).toBe("10,000");
     expect(addIntUSRankSuffix(10 ** 13 + 10 ** 5)).toBe("10,000,000,100,000");
