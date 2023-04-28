@@ -1,3 +1,4 @@
+const US_UNIT_RANK = 3;
 const UNIT_RANK = 4;
 const UNIT_SUFFIX_LIST = ["", "万", "億", "兆"];
 
@@ -83,4 +84,18 @@ export const addIntRankSuffixWithSignificantDigit = (
   }
 
   return new_label + int_suffix;
+};
+
+export const addIntUSRankSuffix = (label_num: number) => {
+  const label = label_num + "";
+
+  let new_label = "";
+  for (let i = 0; i < label.length; i += US_UNIT_RANK) {
+    const ed_i = label.length - i;
+    const value = label.substring(ed_i - US_UNIT_RANK, ed_i);
+    if (i !== 0) new_label = value + "," + new_label;
+    else new_label = value;
+  }
+
+  return new_label;
 };

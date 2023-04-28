@@ -1,4 +1,8 @@
-import { addIntRankSuffix, addIntRankSuffixWithSignificantDigit } from "./util";
+import {
+  addIntRankSuffix,
+  addIntRankSuffixWithSignificantDigit,
+  addIntUSRankSuffix,
+} from "./util";
 
 describe("LineChart ui", () => {
   test("addIntRankSuffix| 単位が追加された文字列を返すか", () => {
@@ -28,5 +32,11 @@ describe("LineChart ui", () => {
       "1.0001億"
     );
     expect(addIntRankSuffixWithSignificantDigit(10 ** 9, 0)).toBe("10億");
+  });
+
+  test("addIntUSRankSuffix| 英語圏の位書き方になるかチェック", () => {
+    expect(addIntRankSuffix(10 ** 2)).toBe("100");
+    expect(addIntUSRankSuffix(10 ** 4)).toBe("10,000");
+    expect(addIntUSRankSuffix(10 ** 13 + 10 ** 5)).toBe("10,000,000,100,000");
   });
 });
