@@ -9,7 +9,7 @@ import {
 
 import { createLine } from "./Line";
 import { LineInfo, LineChartDatum } from "./type";
-import { jaTickFormatter } from "./util";
+import { addRankSuffixWithSignificantDigit } from "./util";
 
 type LineChartProps = {
   height: number | string;
@@ -35,7 +35,7 @@ export const LineChart: React.FC<LineChartProps> = ({
     <ResponsiveContainer width="100%" height={height}>
       <RechartsLineChart
         data={data}
-        margin={{ top: 35, right: 20, bottom: 20, left: 20 }}
+        margin={{ top: 35, right: 10, bottom: 20, left: 15 }}
         title={title}
       >
         {Lines}
@@ -45,7 +45,7 @@ export const LineChart: React.FC<LineChartProps> = ({
           label={{ value: xLabel, position: "insideBottomRight", dy: 12 }}
         />
         <YAxis
-          tickFormatter={(value) => jaTickFormatter(value)}
+          tickFormatter={(value) => addRankSuffixWithSignificantDigit(value, 3)}
           label={{ value: yLabel, position: "insideTopLeft", dy: -35 }}
         />
         {hasTooltip && <Tooltip />}
