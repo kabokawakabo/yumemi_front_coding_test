@@ -8,7 +8,7 @@ type Unit = {
   isLastOrOverSuffix: boolean;
 };
 
-export const createUnitList = (label: string) => {
+const createUnitList = (label: string) => {
   const len = label.length;
   const unit_list: Unit[] = [];
 
