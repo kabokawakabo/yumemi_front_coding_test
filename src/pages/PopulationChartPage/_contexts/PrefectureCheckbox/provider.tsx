@@ -2,11 +2,11 @@ import type { ContextValue } from "./type";
 import { PrefectureCheckboxContext } from "./context";
 import { useSelectedIds } from "./hook";
 
-type PopulationCompositionProviderProps = {
+type PrefectureCheckboxProviderProps = {
   children: React.ReactNode;
 };
-export const PopulationCompositionProvider: React.FC<
-  PopulationCompositionProviderProps
+export const PrefectureCheckboxProvider: React.FC<
+  PrefectureCheckboxProviderProps
 > = ({ children }) => {
   const { selected_ids, addOrRemovePrefCode } = useSelectedIds();
 
