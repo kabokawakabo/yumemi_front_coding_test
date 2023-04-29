@@ -6,7 +6,7 @@ export const useSelectedIds = () => {
     setSelectedIds([...selected_ids, prefCode]);
   };
   const removePrefCodeFromIndex = (index: number) => {
-    const new_ids = selected_ids.splice(index, 1);
+    const new_ids = selected_ids.filter((_, i) => i !== index);
     setSelectedIds(new_ids);
   };
 

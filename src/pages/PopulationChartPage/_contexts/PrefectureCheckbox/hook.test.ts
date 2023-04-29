@@ -4,23 +4,43 @@ import { useSelectedIds } from "./hook.ts";
 
 describe("contextテスト、PrefectureCheckbox Hook", () => {
   test("useSelectedIds| selected_idを追加、削除（既に追加されている場合、削除されるか）をテスト", () => {
+    const expect_set = new Set<number>([]);
     const { result } = renderHook(() => useSelectedIds());
 
-    const getSelectedLen = () => result.current.selected_ids.length;
-    const actAndValidate = (prefCode: number, expect_len: number) => {
+    const actFunc = (prefCode: number) => {
       act(() => result.current.addOrRemovePrefCode(prefCode));
-
-      const len = getSelectedLen();
-      expect(len).toBe(expect_len);
+    };
+    const validateElementCount = (state_ids: number[]) => {
+      expect(state_ids.length).toBe(expect_set.size);
+    };
+    const validateElementValues = (state_ids: number[]) => {
+      for (const prefCode of state_ids) {
+        expect(expect_set.has(prefCode)).toBe(true);
+      }
+    };
+    const validate = () => {
+      const selected_ids = result.current.selected_ids;
+      validateElementCount(selected_ids);
+      validateElementValues(selected_ids);
     };
 
-    const first_len = getSelectedLen();
-    expect(first_len).toBe(0);
+    const addValidate = (prefCode: number) => {
+      actFunc(prefCode);
+      expect_set.add(prefCode);
+      validate();
+    };
+    const removeValidate = (prefCode: number) => {
+      actFunc(prefCode);
+      expect_set.delete(prefCode);
+      validate();
+    };
 
-    const firstPrefCode = 1;
-    const secondPrefCode = 2;
-    actAndValidate(firstPrefCode, 1);
-    actAndValidate(secondPrefCode, 2);
-    actAndValidate(firstPrefCode, 1); // 削除
+    addValidate(1);
+    addValidate(2);
+    addValidate(3);
+    addValidate(4);
+
+    removeValidate(2);
+    removeValidate(1);
   });
 });
