@@ -1,19 +1,21 @@
 import type { LegendInfo } from "../../../uiParts/LegendColorPickerList/type";
+import { useSelectedPrefCodes } from "../_contexts/PrefectureCheckbox/useContext";
 import {
   useGetColorCodeFunc,
-  useGetPrefCodeFunc,
-  useGetPrefecuteNameFunc,
-  useSelectedPrefCodes,
   useSetColorCodeFunc,
-} from "./useContext";
+} from "../_contexts/PrefectureColorPicker/useContext";
+import {
+  useGetNameFromIdFunc,
+  useGetIdFromNameFunc,
+} from "../_contexts/Prefectures/useContext";
 
 export const useLegendData = (): LegendInfo[] => {
   const prefCodes = useSelectedPrefCodes();
   const getColorCodeFunc = useGetColorCodeFunc();
-  const getNameFunc = useGetPrefecuteNameFunc();
+  const getNameFromIdFunc = useGetNameFromIdFunc();
 
   return prefCodes.map((prefCode) => {
-    const label = getNameFunc(prefCode) ?? "";
+    const label = getNameFromIdFunc(prefCode) ?? "";
     const value = getColorCodeFunc(prefCode) ?? "#ffffff";
     return {
       label,
@@ -24,10 +26,10 @@ export const useLegendData = (): LegendInfo[] => {
 
 export const useSetColorCodeForLabelFunc = () => {
   const setColorCodeFunc = useSetColorCodeFunc();
-  const getPrefCodeFunc = useGetPrefCodeFunc();
+  const getIdFromNameFunc = useGetIdFromNameFunc();
 
   return (label: string, color_code: string) => {
-    const prefCode = getPrefCodeFunc(label);
+    const prefCode = getIdFromNameFunc(label);
     if (typeof prefCode === "number") setColorCodeFunc(prefCode, color_code);
   };
 };
