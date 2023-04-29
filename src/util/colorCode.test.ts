@@ -1,16 +1,23 @@
 import { ColorCodeInPickerError } from "./error/ColorCodeInPickerError.ts";
-import { IN_MAX_VALUE, _randomHexLen6, validateInPicker } from "./colorCode.ts";
+import { createRandomColorCode, validateInPicker } from "./colorCode.ts";
+
+const createMock_MathRandom = (value: number) => {
+  jest.spyOn(global.Math, "random").mockReturnValue(value);
+};
 
 describe("utilテスト、colorCode", () => {
-  test("create| ランダム結果0の時、最小値0を作成", () => {
-    const value = _randomHexLen6(0);
-    expect(value).toBe(0);
+  test("create| ランダム結果0の時、黒色を作成", () => {
+    createMock_MathRandom(0);
+    const color_code = createRandomColorCode();
+    expect(color_code).toBe("#000000");
   });
 
-  test("create| ランダム結果1に限りなく近い場合、最大値 を出力", () => {
+  test("create| ランダム結果1に限りなく近い場合、白色を作成", () => {
     const mini_value = 0.1 ** 30;
-    const value = _randomHexLen6(1.0 - mini_value);
-    expect(value).toBe(IN_MAX_VALUE);
+    createMock_MathRandom(1 - mini_value);
+
+    const color_code = createRandomColorCode();
+    expect(color_code).toBe("#ffffff");
   });
 
   test("validate| 文字数以上のhexでエラーを返すか", () => {
