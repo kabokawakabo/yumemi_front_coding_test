@@ -35,6 +35,10 @@ export const usePrefectureData = () => {
   };
 };
 
+export const allPrefCodes = (id2Name: Id2NameObj) => {
+  return Object.keys(id2Name).map(Number);
+};
+
 export const createGetNameFromIdFunc = (
   id2Name: Id2NameObj
 ): getNameFromIdFunc => {
