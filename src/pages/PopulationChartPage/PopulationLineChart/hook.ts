@@ -21,13 +21,15 @@ export const useChartData = (label: string | undefined): LineChartDatum[] => {
 
     for (const i of data.keys()) {
       const { year, value: population } = data[i];
-      const previous_chart_data = chart_data[i] ?? {};
-
-      chart_data.push({
-        ...previous_chart_data,
+      const new_population_obj = {
         name: year,
         [prefCode]: population,
-      });
+      };
+      const previous_chart_data = chart_data[i];
+
+      if (previous_chart_data === undefined)
+        chart_data.push(new_population_obj);
+      else chart_data[i] = { ...previous_chart_data, ...new_population_obj };
     }
   }
 
