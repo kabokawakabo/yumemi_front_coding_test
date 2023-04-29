@@ -1,10 +1,12 @@
 import {
-  useAddOrRemovePrefCodeFunc,
   useAllPrefCodes,
-  useGetIdFromNameFunc,
   useGetNameFromIdFunc,
+  useGetIdFromNameFunc,
+} from "../_contexts/Prefectures/useContext";
+import {
   useSelectedPrefCodes,
-} from "./useContext";
+  useAddOrRemovePrefCodeFunc,
+} from "../_contexts/PrefectureCheckbox/useContext";
 
 export const useLabels = () => {
   const all_prefCodes = useAllPrefCodes();
