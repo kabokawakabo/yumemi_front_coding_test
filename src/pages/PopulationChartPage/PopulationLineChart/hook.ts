@@ -1,15 +1,18 @@
 import type { LineChartDatum, LineInfo } from "../../../uiParts/LineChart/type";
 import { createRandomColorCode } from "../../../util/colorCode";
-import {
-  useGetColorCodeFunc,
-  useGetPopulationDataFunc,
-  useGetPrefectureNameFunc,
-  useSelectedPrefCodes,
-} from "./useContext";
+import { useSelectedLabel as usePopulationSelectedLabel } from "../_contexts/PopulationLabelSelect/useContext";
+import { useGetNameFromIdFunc } from "../_contexts/Prefectures/useContext";
+import { useSelectedPrefCodes } from "../_contexts/PrefectureCheckbox/useContext";
+import { useGetDataFromIdFunc } from "../_contexts/PopulationComposition/useContext";
+import { useGetColorCodeFunc } from "../_contexts/PrefectureColorPicker/useContext";
+
+export const useSelectedLabel = () => {
+  return usePopulationSelectedLabel();
+};
 
 export const useChartData = (label: string | undefined): LineChartDatum[] => {
   const prefCodes = useSelectedPrefCodes();
-  const getDataFromIdFunc = useGetPopulationDataFunc();
+  const getDataFromIdFunc = useGetDataFromIdFunc();
 
   const chart_data: LineChartDatum[] = [];
   for (const prefCode of prefCodes) {
@@ -34,7 +37,7 @@ export const useChartData = (label: string | undefined): LineChartDatum[] => {
 export const useLineData = (): LineInfo[] => {
   const prefCodes = useSelectedPrefCodes();
   const getColorCodeFunc = useGetColorCodeFunc();
-  const getNameFromIdFunc = useGetPrefectureNameFunc();
+  const getNameFromIdFunc = useGetNameFromIdFunc();
 
   return prefCodes.map((prefCode) => {
     const stroke = getColorCodeFunc(prefCode) ?? createRandomColorCode();

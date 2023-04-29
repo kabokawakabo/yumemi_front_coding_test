@@ -1,6 +1,5 @@
 import { LineChart } from "../../../uiParts/LineChart";
-import { useChartData, useLineData } from "./hook";
-import { useSelectedPopulationDataLabel } from "./useContext";
+import { useSelectedLabel, useChartData, useLineData } from "./hook";
 
 type PopulationLineChartProps = {
   style?: React.CSSProperties;
@@ -8,7 +7,7 @@ type PopulationLineChartProps = {
 export const PopulationLineChart: React.FC<PopulationLineChartProps> = ({
   style,
 }) => {
-  const label = useSelectedPopulationDataLabel();
+  const label = useSelectedLabel();
   const chart_data = useChartData(label);
   const line_data = useLineData();
 
