@@ -1,5 +1,10 @@
 import { Select } from "../../../uiParts/Select";
-import { useOnChange, useOptionData, useSelectedValue } from "./hook";
+import {
+  useInitializeLabel,
+  useOnChange,
+  useOptionData,
+  useSelectedValue,
+} from "./hook";
 
 type PopulationLabelSelectProps = {
   style?: React.CSSProperties;
@@ -7,6 +12,7 @@ type PopulationLabelSelectProps = {
 export const PopulationLabelSelect: React.FC<PopulationLabelSelectProps> = ({
   style,
 }) => {
+  useInitializeLabel();
   const value = useSelectedValue();
   const option_data = useOptionData();
   const onChange = useOnChange();
