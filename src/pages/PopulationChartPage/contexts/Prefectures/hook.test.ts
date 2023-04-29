@@ -2,6 +2,7 @@ import { renderHook } from "@testing-library/react";
 
 import type { Name2IdObj, Id2NameObj } from "./type.ts";
 import {
+  allPrefCodes,
   createGetIdFromNameFunc,
   createGetNameFromIdFunc,
   usePrefectureData,
@@ -20,6 +21,18 @@ describe("contextテスト、Prefecture Hook", () => {
     for (const { prefCode, prefName } of MockData) {
       expect(id2Name[prefCode]).toBe(prefName);
       expect(name2Id[prefName]).toBe(prefCode);
+    }
+  });
+
+  test("allPrefCodes| id2Nameデータから全ての県codeを取り出せるかテスト", () => {
+    const id2Name: Id2NameObj = { 1: "北海道", 2: "青森", 3: "岩手" };
+    const expect_set = new Set([1, 2, 3]);
+
+    const all_prefCodes = allPrefCodes(id2Name);
+    expect(all_prefCodes.length).toBe(expect_set.size);
+    for (const prefCode of all_prefCodes) {
+      const hasBool = expect_set.has(prefCode);
+      expect(hasBool).toBe(true);
     }
   });
 
