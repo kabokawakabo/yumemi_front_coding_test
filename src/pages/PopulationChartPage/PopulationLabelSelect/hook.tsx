@@ -1,16 +1,16 @@
 import type { OptionDatum } from "../../../uiParts/Select/type";
+import { usePopulationLabels } from "../_contexts/PopulationComposition/useContext";
 import {
-  usePoupulationDataLabels,
   useSelectedLabel,
-  useSetLabel,
-} from "./useContext";
+  useSetSelectedLabel,
+} from "../_contexts/PopulationLabelSelect/useContext";
 
 export const useSelectedValue = () => {
   return useSelectedLabel() ?? "";
 };
 
 export const useOptionData = (): OptionDatum[] => {
-  const labels = usePoupulationDataLabels();
+  const labels = usePopulationLabels();
 
   return labels === undefined
     ? []
@@ -23,7 +23,7 @@ export const useOptionData = (): OptionDatum[] => {
 };
 
 export const useOnChange = () => {
-  const setLabel = useSetLabel();
+  const setLabel = useSetSelectedLabel();
   return (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
     setLabel(value);
