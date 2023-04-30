@@ -43,6 +43,6 @@ export const getPopulationPerYear = async (
 
   /// NOTE: エラー発生時はresultを絶対返さないっぽいので（https://opendata.resas-portal.go.jp/docs/api/v1/detail/index.html）
   if (data.result === undefined)
-    throw new APIError("都道府県データ　APIエラー");
+    throw new APIError("人口構成データ　APIエラー");
   return data.result.data;
 };

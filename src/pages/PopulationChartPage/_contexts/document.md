@@ -11,10 +11,12 @@
 ## context 依存階層
 
 - Prefectures
-  - PrefectureCheckbox
+  - ＊ PrefectureCheckbox
     - PopulationComposition
-      - PrefectureLabelSelect
+      - ＊ PrefectureLabelSelect
     - PrefectureColorPicker
+
+(＊： Provider 初期設定自体は依存していないが、set 関数によって保存する値は親 provider に依存する状態)
 
 ## 階層内部ファイル
 

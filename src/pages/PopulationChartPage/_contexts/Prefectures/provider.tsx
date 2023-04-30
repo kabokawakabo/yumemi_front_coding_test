@@ -1,5 +1,5 @@
 import type { ContextValue } from "./type.ts";
-import { PrefecturesContext } from "./context";
+import { PrefecturesContext } from "./context.tsx";
 import {
   allPrefCodes,
   createGetNameFromIdFunc,

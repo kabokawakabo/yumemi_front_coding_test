@@ -17,6 +17,11 @@ describe("LineChart ui", () => {
     expect(addIntRankSuffix(10 ** 16 + 10 ** 5)).toBe("10000兆10万");
   });
 
+  test("addIntRankSuffix| 整数値以外はそのまま返すか", () => {
+    expect(addIntRankSuffix(1.1)).toBe("1.1");
+    expect(addIntRankSuffix(10000.0)).toBe("1万"); ///小数値0の場合は無視して処理
+  });
+
   test("addIntRankSuffixWithSignificantDigit| 最大単位 & 有効数字まで表示", () => {
     expect(addIntRankSuffixWithSignificantDigit(10 ** 7 + 10 ** 5, 2)).toBe(
       "1010万"
@@ -34,9 +39,19 @@ describe("LineChart ui", () => {
     expect(addIntRankSuffixWithSignificantDigit(10 ** 9, 0)).toBe("10億");
   });
 
+  test("addIntRankSuffixWithSignificantDigit| 整数値以外はそのまま返すか", () => {
+    expect(addIntRankSuffixWithSignificantDigit(1.1, 1)).toBe("1.1");
+    expect(addIntRankSuffixWithSignificantDigit(100000.0, 1)).toBe("10万"); ///小数値0の場合は無視して処理
+  });
+
   test("addIntUSRankSuffix| 英語圏の数字位風書き方になるかチェック", () => {
     expect(addIntRankSuffix(10 ** 2)).toBe("100");
     expect(addIntUSRankSuffix(10 ** 4)).toBe("10,000");
     expect(addIntUSRankSuffix(10 ** 13 + 10 ** 5)).toBe("10,000,000,100,000");
+  });
+
+  test("addIntUSRankSuffix| 整数値以外はそのまま返すか", () => {
+    expect(addIntRankSuffix(1.1)).toBe("1.1");
+    expect(addIntUSRankSuffix(10000.0)).toBe("10,000"); ///小数値0の場合は無視して処理
   });
 });

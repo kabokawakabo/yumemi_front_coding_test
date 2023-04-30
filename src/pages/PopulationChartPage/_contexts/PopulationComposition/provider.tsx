@@ -1,5 +1,5 @@
 import type { ContextValue } from "./type.ts";
-import { PopulationCompositionContext } from "./context";
+import { PopulationCompositionContext } from "./context.tsx";
 import {
   getPopulationCompositionLabels,
   usePopulationCompositionData,

@@ -1,0 +1,15 @@
+.main_group {
+    margin-top: 1rem;
+}
+
+.main_group_media {
+    padding: 0px 4px 0px;
+}
+
+@media (min-width: 440px){
+    .main_group_media {
+        max-width: 800px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}

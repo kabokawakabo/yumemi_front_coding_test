@@ -1,25 +1,20 @@
-.tmp_header_title {
-    width: 100%;
-    text-align: center;
+.footer {
+    margin-top: 1rem;
+    background-color: whitesmoke;
+    border-top: 4px black;
+    position: sticky;
+    top: 100vh
 }
 
-
-.header {
-    border-bottom: solid;
-    border-width: 2px;
-    border-color: black;
-}
-
-
-.header_media {
-    padding: 5px 5px 3px;
+.footer_media {
+    padding: 1rem 5px 4rem;
 }
 
 /* TODO: varでmedia長を動的に変更する
  :rootが書かれたmoduleを `import "module.css相対パス";`しても media解析の方が早く? varでは動作しなかったので代案を考えたい
  */
 @media (min-width: 440px) {
-    .header_media {
-        padding: 5px 20px 3px;
+    .footer_media {
+        padding: 1rem 20px 4rem;
     }
 }
