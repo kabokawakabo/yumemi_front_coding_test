@@ -1,7 +1,7 @@
 .footer {
     margin-top: 1rem;
     background-color: whitesmoke;
-    border-top: 4px black;
+    border-top: 1px gray solid;
     position: sticky;
     top: 100vh
 }
