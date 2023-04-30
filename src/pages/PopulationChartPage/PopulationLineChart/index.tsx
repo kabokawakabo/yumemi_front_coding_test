@@ -16,9 +16,10 @@ export const PopulationLineChart: React.FC<PopulationLineChartProps> = ({
       <LineChart
         data={chart_data}
         lineData={line_data}
-        xLabel={label}
-        yLabel="人数"
+        xLabel="年度"
+        yLabel={label}
         height={400}
+        hasTooltip
       />
     </div>
   );
