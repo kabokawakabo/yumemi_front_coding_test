@@ -4,20 +4,22 @@
 }
 
 
-.header_media {
-    padding: 5px 20px 3px;
-}
-
 .header {
-    width: 100vw;
     border-bottom: solid;
     border-width: 2px;
     border-color: black;
 }
 
-@media screen and (max-width: 440px) {
+
+.header_media {
+    padding: 5px 5px 3px;
+}
+
+/* TODO: varでmedia長を動的に変更する
+ :rootが書かれたmoduleを `import "module.css相対パス";`しても media解析の方が早く? varでは動作しなかったので代案を考えたい
+ */
+@media (min-width: 440px) {
     .header_media {
-        width: 100vw;
-        padding: 5px 5px 3px;
+        padding: 5px 20px 3px;
     }
 }

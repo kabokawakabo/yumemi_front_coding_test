@@ -26,6 +26,8 @@ type Story = StoryObj<typeof meta>;
 export const LineElementCount: Story = {
   args: {
     height: 400,
+    xLabel: "xラベル",
+    yLabel: "yラベル",
     data: createLineData(["a", "b", "c"]),
     lineData: [
       { dataKey: "a", stroke: "#f00" },

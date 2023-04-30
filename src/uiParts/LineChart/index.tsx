@@ -9,9 +9,15 @@ import {
 
 import { createLine } from "./Line";
 import { LineInfo, LineChartDatum } from "./type";
+import {
+  addIntRankSuffixWithSignificantDigit,
+  addIntUSRankSuffix,
+} from "./util";
 
 type LineChartProps = {
-  height: number;
+  height: number | string;
+  xLabel?: number | string;
+  yLabel?: number | string;
   data: LineChartDatum[];
   lineData: LineInfo[];
   hasTooltip?: boolean;
@@ -19,25 +25,42 @@ type LineChartProps = {
 };
 export const LineChart: React.FC<LineChartProps> = ({
   height,
+  xLabel,
+  yLabel,
   data,
   lineData,
   hasTooltip,
   title,
 }) => {
   const Lines = lineData.map((d) => createLine(d));
+  function yAxisFormatter<T>(value: T) {
+    if (typeof value === "number")
+      return addIntRankSuffixWithSignificantDigit(value, 2);
+    return value;
+  }
+  function tooltipFormatter<T>(v: T) {
+    if (typeof v === "number") return addIntUSRankSuffix(v);
+    return v;
+  }
 
   return (
     <ResponsiveContainer width="100%" height={height}>
       <RechartsLineChart
         data={data}
-        margin={{ top: 5, right: 20, bottom: 5, left: 20 }}
+        margin={{ top: 35, right: 10, bottom: 20, left: 15 }}
         title={title}
       >
         {Lines}
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        {hasTooltip && <Tooltip />}
+        <XAxis
+          dataKey="name"
+          label={{ value: xLabel, position: "insideBottomRight", dy: 12 }}
+        />
+        <YAxis
+          tickFormatter={yAxisFormatter}
+          label={{ value: yLabel, position: "insideTopLeft", dy: -35 }}
+        />
+        {hasTooltip && <Tooltip formatter={tooltipFormatter} />}
       </RechartsLineChart>
     </ResponsiveContainer>
   );

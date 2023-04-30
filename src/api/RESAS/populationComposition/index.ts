@@ -1,15 +1,10 @@
-import { APIError } from "../APIError";
-import { ENDPOINT, RESAS_Response, TOKEN } from "./_settings";
+import { APIError } from "../../../util/error/APIError";
+import { ENDPOINT, RESAS_Response, TOKEN } from "../_settings";
+import type {
+  PopulationCompositionPerYear,
+  getPopulationPerYearProps,
+} from "./type";
 
-type YearPopulation = {
-  year: number;
-  value: number;
-  rate?: number;
-};
-export type PopulationCompositionPerYear = {
-  label: string;
-  data: YearPopulation[];
-};
 type Response = {
   result?: {
     boundaryYear: number;
@@ -17,11 +12,6 @@ type Response = {
   };
 } & RESAS_Response;
 
-type getPopulationPerYearProps = {
-  prefCode: number;
-  cityCode?: number; // undefinedで「すべての市区町村」を選択
-  addArea?: string;
-};
 const getParams = (props: getPopulationPerYearProps) => {
   const { prefCode, cityCode, addArea } = props;
 
@@ -53,6 +43,6 @@ export const getPopulationPerYear = async (
 
   /// NOTE: エラー発生時はresultを絶対返さないっぽいので（https://opendata.resas-portal.go.jp/docs/api/v1/detail/index.html）
   if (data.result === undefined)
-    throw new APIError("都道府県データ　APIエラー");
+    throw new APIError("人口構成データ　APIエラー");
   return data.result.data;
 };

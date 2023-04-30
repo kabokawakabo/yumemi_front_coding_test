@@ -1,3 +1,4 @@
+import { MAX_POPULATION } from "../../api/RESAS/populationComposition/mock";
 import { LineChartDatum } from "./type";
 
 export const createLineData = (linkKeys: string[]) => {
@@ -7,7 +8,7 @@ export const createLineData = (linkKeys: string[]) => {
   for (const name of names) {
     const obj: LineChartDatum = { name };
     for (const linkKey of linkKeys) {
-      obj[linkKey] = Math.floor(Math.random() * 100000);
+      obj[linkKey] = Math.floor(Math.random() * MAX_POPULATION);
     }
 
     lineData.push(obj);

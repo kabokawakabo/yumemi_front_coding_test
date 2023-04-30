@@ -52,3 +52,5 @@ export const ColorPickerClass: Story = {
     expect(className).toBe(initialArgs.className);
   },
 };
+
+// TODO: colorPicker操作時、onChangeが動作するか... の自動テスト方法がわからない
