@@ -14,7 +14,12 @@ export const PopulationLabelSelect: React.FC = () => {
 
   return (
     <div>
-      <Select value={value} option_data={option_data} onChange={onChange} />
+      <Select
+        label="y軸内容："
+        value={value}
+        option_data={option_data}
+        onChange={onChange}
+      />
     </div>
   );
 };

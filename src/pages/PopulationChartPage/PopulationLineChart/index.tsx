@@ -12,7 +12,6 @@ export const PopulationLineChart: React.FC = () => {
         data={chart_data}
         lineData={line_data}
         xLabel="年度"
-        yLabel={label}
         height={400}
         hasTooltip
       />
