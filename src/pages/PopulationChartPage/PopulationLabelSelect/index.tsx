@@ -6,19 +6,14 @@ import {
   useSelectedValue,
 } from "./hook";
 
-type PopulationLabelSelectProps = {
-  style?: React.CSSProperties;
-};
-export const PopulationLabelSelect: React.FC<PopulationLabelSelectProps> = ({
-  style,
-}) => {
+export const PopulationLabelSelect: React.FC = () => {
   useInitializeLabel();
   const value = useSelectedValue();
   const option_data = useOptionData();
   const onChange = useOnChange();
 
   return (
-    <div style={style}>
+    <div>
       <Select value={value} option_data={option_data} onChange={onChange} />
     </div>
   );
