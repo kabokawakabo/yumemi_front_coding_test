@@ -23,7 +23,7 @@ describe("contextテスト、PrefectureColorPicker Hook", () => {
     }
   });
 
-  test("usePrefectureColorPickerData| propsに新たなデータが加えられても既存データのカラーコードは不変かテスト（propの数が同じで要素内容が違う...状態が発生しない条件）", () => {
+  test("usePrefectureColorPickerData| propsに新たなデータが加えられても既存データのカラーコードは不変かテスト", () => {
     const EXIST_ID = 1;
     const initial_prefCodes = [EXIST_ID];
     const new_prefCodes = [EXIST_ID, 2]; /// checkboxで prefCode 2 を選択
