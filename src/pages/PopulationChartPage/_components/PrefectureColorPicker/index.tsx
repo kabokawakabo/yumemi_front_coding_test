@@ -1,4 +1,4 @@
-import { LegendColorPickerList } from "../../../uiParts/LegendColorPickerList";
+import { LegendColorPickerList } from "../../../../uiParts/LegendColorPickerList";
 import { useLegendData, useSetColorCodeForLabelFunc } from "./hook";
 
 export const PrefectureColorPicker: React.FC = () => {

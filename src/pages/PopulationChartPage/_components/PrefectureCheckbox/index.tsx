@@ -1,4 +1,4 @@
-import { CheckboxList } from "../../../uiParts/CheckboxList";
+import { CheckboxList } from "../../../../uiParts/CheckboxList";
 import { useLabels, useSelectedLabels, useSetSelectedLabels } from "./hook";
 
 export const PrefectureCheckbox: React.FC = () => {

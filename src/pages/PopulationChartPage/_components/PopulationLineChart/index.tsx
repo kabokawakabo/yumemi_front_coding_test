@@ -1,4 +1,4 @@
-import { LineChart } from "../../../uiParts/LineChart";
+import { LineChart } from "../../../../uiParts/LineChart";
 import { useSelectedLabel, useChartData, useLineData } from "./hook";
 
 export const PopulationLineChart: React.FC = () => {

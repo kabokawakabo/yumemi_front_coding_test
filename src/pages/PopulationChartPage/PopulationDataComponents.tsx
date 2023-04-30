@@ -1,8 +1,8 @@
 import { ErrorBoundary } from "../../util/error/ErrorBoundary";
 import { PopulationProviders } from "./_contexts/PopulationProviders";
-import { PopulationLabelSelect } from "./PopulationLabelSelect";
-import { PopulationLineChart } from "./PopulationLineChart";
-import { PrefectureColorPicker } from "./PrefectureColorPicker";
+import { PopulationLabelSelect } from "./_components/PopulationLabelSelect";
+import { PopulationLineChart } from "./_components/PopulationLineChart";
+import { PrefectureColorPicker } from "./_components/PrefectureColorPicker";
 import style from "./style.module.css";
 
 export const PopulationDataComponents: React.FC = () => {

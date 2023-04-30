@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import type { OptionDatum } from "../../../uiParts/Select/type";
-import { usePopulationLabels } from "../_contexts/PopulationComposition/useContext";
+import type { OptionDatum } from "../../../../uiParts/Select/type";
+import { usePopulationLabels } from "../../_contexts/PopulationComposition/useContext";
 import {
   useSelectedLabel,
   useSetSelectedLabel,
-} from "../_contexts/PopulationLabelSelect/useContext";
+} from "../../_contexts/PopulationLabelSelect/useContext";
 
 export const useInitializeLabel = () => {
   const labels = usePopulationLabels();

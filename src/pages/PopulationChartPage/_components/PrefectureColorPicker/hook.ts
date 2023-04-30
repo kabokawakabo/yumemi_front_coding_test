@@ -1,13 +1,13 @@
-import type { LegendInfo } from "../../../uiParts/LegendColorPickerList/type";
-import { useSelectedPrefCodes } from "../_contexts/PrefectureCheckbox/useContext";
+import type { LegendInfo } from "../../../../uiParts/LegendColorPickerList/type";
+import { useSelectedPrefCodes } from "../../_contexts/PrefectureCheckbox/useContext";
 import {
   useGetColorCodeFunc,
   useSetColorCodeFunc,
-} from "../_contexts/PrefectureColorPicker/useContext";
+} from "../../_contexts/PrefectureColorPicker/useContext";
 import {
   useGetNameFromIdFunc,
   useGetIdFromNameFunc,
-} from "../_contexts/Prefectures/useContext";
+} from "../../_contexts/Prefectures/useContext";
 
 export const useLegendData = (): LegendInfo[] => {
   const prefCodes = useSelectedPrefCodes();

@@ -2,11 +2,11 @@ import { renderHook } from "@testing-library/react";
 
 import { useChartData } from "./hook.ts";
 
-import { LABELS } from "../../../api/RESAS/populationComposition/mock";
-import { createStateFromIds } from "../_contexts/PopulationComposition/mock.ts";
+import { LABELS } from "../../../../api/RESAS/populationComposition/mock.ts";
+import { createStateFromIds } from "../../_contexts/PopulationComposition/mock.ts";
 
-import { useSelectedPrefCodes } from "../_contexts/PrefectureCheckbox/useContext.ts";
-import { useGetDataFromIdFunc } from "../_contexts/PopulationComposition/useContext";
+import { useSelectedPrefCodes } from "../../_contexts/PrefectureCheckbox/useContext.ts";
+import { useGetDataFromIdFunc } from "../../_contexts/PopulationComposition/useContext.ts";
 jest.mock("../_contexts/PrefectureCheckbox/useContext.ts");
 jest.mock("../_contexts/PopulationComposition/useContext");
 

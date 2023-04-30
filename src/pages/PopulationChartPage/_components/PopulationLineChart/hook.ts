@@ -1,10 +1,13 @@
-import type { LineChartDatum, LineInfo } from "../../../uiParts/LineChart/type";
-import { createRandomColorCode } from "../../../util/colorCode";
-import { useSelectedLabel as usePopulationSelectedLabel } from "../_contexts/PopulationLabelSelect/useContext";
-import { useGetNameFromIdFunc } from "../_contexts/Prefectures/useContext";
-import { useSelectedPrefCodes } from "../_contexts/PrefectureCheckbox/useContext";
-import { useGetDataFromIdFunc } from "../_contexts/PopulationComposition/useContext";
-import { useGetColorCodeFunc } from "../_contexts/PrefectureColorPicker/useContext";
+import type {
+  LineChartDatum,
+  LineInfo,
+} from "../../../../uiParts/LineChart/type";
+import { createRandomColorCode } from "../../../../util/colorCode";
+import { useSelectedLabel as usePopulationSelectedLabel } from "../../_contexts/PopulationLabelSelect/useContext";
+import { useGetNameFromIdFunc } from "../../_contexts/Prefectures/useContext";
+import { useSelectedPrefCodes } from "../../_contexts/PrefectureCheckbox/useContext";
+import { useGetDataFromIdFunc } from "../../_contexts/PopulationComposition/useContext";
+import { useGetColorCodeFunc } from "../../_contexts/PrefectureColorPicker/useContext";
 
 export const useSelectedLabel = () => {
   return usePopulationSelectedLabel();

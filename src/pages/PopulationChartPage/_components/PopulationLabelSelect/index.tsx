@@ -1,4 +1,4 @@
-import { Select } from "../../../uiParts/Select";
+import { Select } from "../../../../uiParts/Select";
 import {
   useInitializeLabel,
   useOnChange,

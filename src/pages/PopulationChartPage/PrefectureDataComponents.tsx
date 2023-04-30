@@ -1,7 +1,7 @@
 import { ErrorBoundary } from "../../util/error/ErrorBoundary";
 import { MainTitle } from "./MainTitle";
 import { PopulationDataComponents } from "./PopulationDataComponents";
-import { PrefectureCheckbox } from "./PrefectureCheckbox";
+import { PrefectureCheckbox } from "./_components/PrefectureCheckbox";
 import { PrefecuterProviders } from "./_contexts/PrefectureProviders";
 import style from "./style.module.css";
 
