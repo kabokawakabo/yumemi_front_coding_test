@@ -27,9 +27,12 @@ const createUnitList = (label: string) => {
   return unit_list;
 };
 
+const isInt = (v: number) => v % 1 === 0;
 const isAllZeroStr = (str: string) => str.split("").every((d) => d === "0");
 
-export const addIntRankSuffix = (label_num: number) => {
+export const addIntRankSuffix = (label_num: number): string => {
+  if (!isInt(label_num)) return label_num + ""; // 整数値以外はそのまま + strで返す
+
   const label = label_num + "";
   const unit_list = createUnitList(label);
 
@@ -50,7 +53,9 @@ export const addIntRankSuffix = (label_num: number) => {
 export const addIntRankSuffixWithSignificantDigit = (
   label_num: number,
   tol_digit: number
-) => {
+): string => {
+  if (!isInt(label_num)) return label_num + ""; // 整数値以外はそのまま返す
+
   const label = label_num + "";
   const unit_list = createUnitList(label);
   const reverse_unit_list = [...unit_list].reverse();
@@ -86,7 +91,9 @@ export const addIntRankSuffixWithSignificantDigit = (
   return new_label + int_suffix;
 };
 
-export const addIntUSRankSuffix = (label_num: number) => {
+export const addIntUSRankSuffix = (label_num: number): string => {
+  if (!isInt(label_num)) return label_num + ""; // 整数値以外はそのままで文字列化
+
   const label = label_num + "";
 
   let new_label = "";
