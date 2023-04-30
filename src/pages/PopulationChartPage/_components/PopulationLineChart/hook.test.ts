@@ -7,8 +7,8 @@ import { createStateFromIds } from "../../_contexts/PopulationComposition/mock.t
 
 import { useSelectedPrefCodes } from "../../_contexts/PrefectureCheckbox/useContext.ts";
 import { useGetDataFromIdFunc } from "../../_contexts/PopulationComposition/useContext.ts";
-jest.mock("../_contexts/PrefectureCheckbox/useContext.ts");
-jest.mock("../_contexts/PopulationComposition/useContext");
+jest.mock("../../_contexts/PrefectureCheckbox/useContext.ts");
+jest.mock("../../_contexts/PopulationComposition/useContext");
 
 const PREF_CODES = [1, 3, 4];
 const POPULATION_STATE = createStateFromIds(PREF_CODES);
