@@ -2,6 +2,8 @@
     margin-top: 1rem;
     background-color: whitesmoke;
     border-top: 4px black;
+    position: sticky;
+    top: 100vh
 }
 
 .footer_media {
