@@ -9,10 +9,13 @@ import {
 export const useInitializeLabel = () => {
   const labels = usePopulationLabels();
   const setLabel = useSetSelectedLabel();
+  const selected_label = useSelectedLabel();
+  const isNotSelected = selected_label === undefined;
   useEffect(() => {
     const initialize_label = labels === undefined ? undefined : labels[0];
-    if (initialize_label !== undefined) setLabel(initialize_label);
-  }, [labels, setLabel]);
+    if (isNotSelected && initialize_label !== undefined)
+      setLabel(initialize_label);
+  }, [labels, setLabel, isNotSelected]);
 };
 
 export const useSelectedValue = () => {
