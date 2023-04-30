@@ -11,11 +11,11 @@ import { createStateFromIds, createMockQuery } from "./mock.ts";
 jest.mock("./query.ts");
 
 describe("contextテスト、PopulationComposition Hook", () => {
-  test("usePopulationCompositionData| state変更時 データが追加されるかテスト", () => {
+  test("usePopulationCompositionData| state変更時 データが追加されるか。既存データもstateに残っているかテスト", () => {
     createMockQuery();
 
-    const initial_prefCodes = [1, 2, 3, 4];
-    const new_prefCodes = [2, 5];
+    const initial_prefCodes = [1, 3];
+    const new_prefCodes = [1, 2, 5];
     const { result, rerender } = renderHook(
       (props) => usePopulationCompositionData(props),
       {
@@ -64,9 +64,9 @@ describe("contextテスト、PopulationComposition Hook", () => {
       const prefCode = new_prefCodes[i];
       const value = getDataFromIdFunc(prefCode, LABELS[0]);
 
-      const expect_value = expect(value);
-      if (initial_prefCodes_set.has(prefCode)) expect_value.not.toBe(undefined);
-      else expect_value.toBe(undefined);
+      if (initial_prefCodes_set.has(prefCode))
+        expect(value).not.toBe(undefined);
+      else expect(value).toBe(undefined);
     }
   });
 });
