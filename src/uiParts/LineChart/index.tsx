@@ -33,6 +33,11 @@ export const LineChart: React.FC<LineChartProps> = ({
   title,
 }) => {
   const Lines = lineData.map((d) => createLine(d));
+  function yAxisFormatter<T>(value: T) {
+    if (typeof value === "number")
+      return addIntRankSuffixWithSignificantDigit(value, 2);
+    return value;
+  }
   function tooltipFormatter<T>(v: T) {
     if (typeof v === "number") return addIntUSRankSuffix(v);
     return v;
@@ -52,9 +57,7 @@ export const LineChart: React.FC<LineChartProps> = ({
           label={{ value: xLabel, position: "insideBottomRight", dy: 12 }}
         />
         <YAxis
-          tickFormatter={(value) =>
-            addIntRankSuffixWithSignificantDigit(value, 3)
-          }
+          tickFormatter={yAxisFormatter}
           label={{ value: yLabel, position: "insideTopLeft", dy: -35 }}
         />
         {hasTooltip && <Tooltip formatter={tooltipFormatter} />}
