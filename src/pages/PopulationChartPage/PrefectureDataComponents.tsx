@@ -1,4 +1,5 @@
 import { ErrorBoundary } from "../../util/error/ErrorBoundary";
+import { MainTitle } from "./MainTitle";
 import { PopulationDataComponents } from "./PopulationDataComponents";
 import { PrefectureCheckbox } from "./PrefectureCheckbox";
 import { PrefecuterProviders } from "./_contexts/PrefectureProviders";
@@ -9,6 +10,7 @@ export const PrefectureDataComponents = () => {
     <main className={style.main_group + " " + style.main_group_media}>
       <ErrorBoundary>
         <PrefecuterProviders>
+          <MainTitle />
           <PrefectureCheckbox />
           <PopulationDataComponents />
         </PrefecuterProviders>
